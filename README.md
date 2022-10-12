@@ -101,7 +101,7 @@ function move(lx,ly,cx,cy){}
 //选定了一个棋子，标出他能走到的格子和能攻击的格子
 function markValid(situation,board,piece){}
 
-//标记出被某方棋子攻击的所有格子，包括被国王攻击
+//标记出被某方棋子攻击的所有格子，包括被国王攻击 wyj
 /*调用markValid*/
 function markAttack(situation,board,side){}
 
