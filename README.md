@@ -3,14 +3,14 @@
 nmsl
 # 棋盘
 
-```js
+```txt
 从[1][1]到[8][8]，第一维代表行数，第二维代表列数，根据双方角色不同，实际可能要旋转180度
 ```
 
 <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fss2.meipian.me%2Fusers%2F46251981%2F028b120f917749339f0e531a827e470d.jpg%3Fmeipian-raw%2Fbucket%2Fivwen%2Fkey%2FdXNlcnMvNDYyNTE5ODEvMDI4YjEyMGY5MTc3NDkzMzlmMGU1MzFhODI3ZTQ3MGQuanBn%2Fsign%2F697c633bbcf3565667aa4d0832c8dd18.jpg&refer=http%3A%2F%2Fss2.meipian.me&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668157576&t=ecb47aeff75aa12f23b6df53fa95f4ce" />
 
 ### 通讯指令
-```java
+```txt
 /host id
     //主持一局游戏，id为游戏唯一识别编号
 //只有id匹配才执行下面的指令
