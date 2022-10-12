@@ -1,0 +1,112 @@
+a {
+    cursor: pointer;
+}
+
+/*仅仅修改了边框颜色和插入了一张王思聪背景图*/
+#intro {
+    position: fixed;
+    transition: .5s all ease-in-out;
+    text-align: center;
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 2px #000 solid;
+    border-radius: 20px;
+    /* background-image:url(./eating.gif); */
+}
+
+
+    #intro p {
+        margin: 30px;
+    }
+
+    #intro a {
+        transition: .2s all ease-in-out;
+        padding: 5px 10px;
+        border: 2px #000 solid;
+        border-radius: 5px;
+    }
+
+        #intro a:hover {
+            color: #fff;
+            background-color: #000;
+        }
+
+#Control {
+    transition: .2s all ease-in-out;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: #000;
+}
+
+    #Control a, #GameMode a {
+        transition: .2s all ease-in-out;
+        font-size: 2em;
+        display: inline-block;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+        width: 40px;
+        height: 40px;
+        border: 3px #000 solid;
+        border-radius: 100%;
+        color: #000;
+    }
+
+        #Control a:hover, #GameMode a:hover {
+            color: deep#000;
+            border: 3px deep#000 solid;
+        }
+
+#CountDown {
+    text-align: center;
+    position: fixed;
+    font-size: 5em;
+    font-family: 'Comic Sans MS';
+    margin: auto;
+    width: 600px;
+    top: 10px;
+    left: 0;
+    right: 0;
+}
+
+#GameMode {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+#status {
+    transition: .2s all ease-in-out;
+    opacity: 0;
+    position: fixed;
+    text-align: center;
+    font-size: 5em;
+    font-family: 'Comic Sans MS';
+    width: 600px;
+    height: 100px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#scoreBoard {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    font-family: 'Comic Sans MS';
+    font-size: 3em;
+    color: #000;
+}
+
+#gameBoard #eater, #gameBoard .breads {
+    position: fixed;
+}

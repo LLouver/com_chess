@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>吃面包</title>
+    <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="./sources/game.css" rel="stylesheet">
+</head>
+<body>
+    <section id="intro" style="opacity: 1;">
+        <!-- Intro  想改一下字体不过有点小问题。然后改了按钮的文字-->
+        <div style="font-family: times;">
+            <h1 style="font-size: 2em;">吃面包</h1>
+            <p>左上角三个键分别是开始、暂停和重置</p>
+            <p>右下角是开始倒计时模式(1分钟)</p>
+            <p>右上角是记分板, 每吃到一个面包积分+1</p>
+            <a onclick="closeIntro()">知道啦</a>
+        </div>
+    </section>
+    <section id="Control">
+        <!-- Controls -->
+        <a onclick="gameStart()"><i class="fa fa-play"></i></a>
+        <a onclick="gameStop()"><i class="fa fa-pause"></i></a>
+        <a onclick="gameInitialize()"><i class="fa fa-undo"></i></a>
+    </section>
+    <section id="GameMode">
+        <!-- GameMode -->
+        <a onclick="gamemode(0)"><i class="fa fa-clock"></i></a>
+    </section>
+    <section id="CountDown" style="opacity: 0"></section>
+    <section id="scoreBoard">0</section>
+    <section id="status"></section>
+    <section id="gameBoard">
+        <!-- Game -->
+        <div id="eater" style="left: 0; bottom: 50px; z-index: 1;"><img src="./sources/img/eater.png" width="72" ;height="95" /></div>
+    </section>
+    <footer>
+        <script async src="./sources/game.js"></script>
+    </footer>
+</body>
+</html>

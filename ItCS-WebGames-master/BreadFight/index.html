@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>面包大战</title>
+        <link href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet">
+        <link href="./sources/game.css" rel="stylesheet">
+    </head>
+    <body>
+        <section id="intro" style="opacity: 1;">
+            <!-- Intro -->
+            <div>
+                <h1 style="font-size: 2em;">玩法</h1>
+                <p>左上角三个键分别是开始、暂停和重置</p>
+                <p>右下角角是开始倒计时模式(1分钟)</p>
+                <p>右上角是记分板, 每完成一个顾客积分+1, 漏掉一个顾客积分-10</p>
+                <a onclick="closeIntro()">朕已知晓</a>
+            </div>
+        </section>
+        <section id="Control">
+            <!-- Controls -->
+            <a onclick="gameStart()"><i class="fa fa-play"></i></a>
+            <a onclick="gameStop()"><i class="fa fa-pause"></i></a>
+            <a onclick="gameInitialize()"><i class="fa fa-undo"></i></a>
+        </section>
+        <section id="GameMode">
+            <!-- GameMode -->
+            <a onclick="gamemode(0)"><i class="fa fa-clock"></i></a>
+        </section>
+        <section id="CountDown" style="opacity: 0"></section>
+        <section id="scoreBoard">0</section>
+        <section id="status"></section>
+        <section id="gameBoard">
+            <!-- Game -->
+        </section>
+        <footer>
+            <script async src="./sources/game.js"></script>
+        </footer>
+    </body>
+</html>

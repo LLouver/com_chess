@@ -1,0 +1,35 @@
+#mainBoard{
+    background-color: white;
+    position: absolute;
+    left: 10%;
+    top: 15%;
+}
+#board{
+    background-color: green;
+    width: 70%;
+    height: 70%;
+    min-width: 300px;
+    min-height: 300px;
+    padding: 0;
+    border: 0;
+    margin: 0;
+
+
+    display: grid;
+    grid-template-columns: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+    grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
+}
+
+
+.cell{
+    text-align: center;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+.black{
+    background-color: #769656;
+}
+.white{
+    background-color: #eeeed2;
+}

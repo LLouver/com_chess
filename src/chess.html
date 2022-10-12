@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" onclick="console.log('haha');">
+<head>
+	<meta charset="UTF-8">
+	<title>Chess</title>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/style.js"></script>
+	<link type="text/css" href="css/main.css" rel="stylesheet">
+	<link type="text/css" href="css/piece.css" rel="stylesheet">
+
+	<!-- <link type="text/css" href="css/UNO.css" rel="stylesheet">
+	<link type="text/css" href="css/card.css" rel="stylesheet">
+	<link type="text/css" href="css/button.css" rel="stylesheet">
+
+	<script type="text/javascript" src="test/ChessGame.js"></script>
+	<script type="text/javascript" src="test/ChessSituation.js"></script>
+	<script type="text/javascript" src="js/player.js"></script>
+	<script type="text/javascript" src="js/card.js"></script>
+	<script type="text/javascript" src="js/game.js"></script>
+	<script type="text/javascript" src="js/socket.js"></script>
+	<script type="text/javascript" src="js/console.js"></script>
+	<script type="text/javascript" src="js/util.js"></script>
+	<script type="text/javascript" src="js/player.js"></script>
+	-->
+
+</head>
+
+<body style="background-color: #312e2b">
+
+
+<div id="mainBoard">
+	<div id="enemyPlayer" class="player">Opponent</div>
+	<div id="board"></div>
+	<div id="selfPlayer" class="player">Me</div>
+</div>
+
+<script>
+    "use strict";
+    //当浏览器大小改变时，重设棋盘大小
+    window.onresize=resetBorderSize;
+    resetBorderSize();
+    //初始化棋盘
+    for(let i = 1 ; i <= 8 ; ++ i){
+        for(let j = 1 ; j <= 8 ; ++ j){
+            let id = 'cell'+i+j;
+            let c = "<div id="+id+" class='cell " + ((i+j)%2===1?"white":"black") + "'>" +i +" " +j + "</div>";
+            document.getElementById("board").innerHTML += c;
+            console.log("added" + i + j);
+        }
+    }
+    let s="cell11";
+    document.getElementById(s).innerHTML="<div class='piece bq'></div>";
+</script>
+
+</body>
+</html>
