@@ -4,7 +4,7 @@
 "use strict";
 //选定了一个棋子，标出他能走到的格子和能攻击的格子
 function markValid(situation,board,piece){
-//xiangmingyang is my grand son
+//xiangmingyang is my grand son 
 }
 
 //标记出被某方棋子攻击的所有格子，包括被国王攻击
