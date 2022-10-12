@@ -1,5 +1,6 @@
 # com_chess
 计科导大作业1
+nmsl
 # 棋盘
 
 ```js
