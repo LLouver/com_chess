@@ -1,6 +1,5 @@
-# com_chess
-计科导大作业1
-nmsl
+# com_chess - 计科导大作业1
+
 # 棋盘
 
 ```txt
@@ -123,5 +122,15 @@ function isCheck(situation,side){}
 function isCheckmate(situation,side){}
 
 
+```
+
+### global
+
+```js
+var started=0;//记录游戏是否已经开始
+var pieceChoosed=0;//记录是否选中了一个棋子
+var movable=0;//记录现在是不是自己的回合，能不能移动棋子
+var gamesitu;//记录局面
+var board;//辅助数组，用于标记各种被攻击，可走到的位置。
 ```
 
