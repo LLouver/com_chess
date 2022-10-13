@@ -5,8 +5,8 @@
 function showSituation(situation){
     for (let i = 1; i <= 8; ++i) {
         for (let j = 8; j >= 1; --j) {
-            if(gameSitu[i][j] !== "  "){
-                addPiece(i,j,gameSitu[i][j]);
+            if(situation[i][j] !== "  "){
+                addPiece(i,j,situation[i][j]);
             }
         }
     }

@@ -4,21 +4,21 @@
 
 function doReceive(s){
 
-    console.log(s);
+    //console.log(s);
     if(s.indexOf('*') === 0){
         if(s.indexOf('joined')) {
-            console.log("一个玩家加入了！");
+           // console.log("一个玩家加入了！");
             //pInRoom++;
         }
         else {
-            console.log("一个玩家离开了！");
+            //console.log("一个玩家离开了！");
             //pInRoom--;
         }
         //document.getElementById("numberOfPlayerInRoom").innerText=pInRoom.toString();
     }
     let p=s.indexOf(":");
     let args = s.substring(p+2).split(' ');
-    console.log("rec:" + args);
+    //console.log("rec:" + args);
     switch (args[0]){
         case '/host'://id,name,side
             console.log('a room created');
@@ -57,7 +57,7 @@ function doReceive(s){
 }
 
 function doRequest(message){
-    console.log("sed:"+message);
+    //console.log("sed:"+message);
     if (message !== '') {
         Chat.socket.send(message);
         //document.getElementById('chat').value = '';

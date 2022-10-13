@@ -4,8 +4,6 @@
 
 //初始化局面
 function initSituation(situation){
-    //定义一个数组
-    situation=[];
     for(let i = 1 ; i <= 8 ; ++i){
         //数组从位置1开始，位置0直接为空，不用管
         situation[i]=[]; //数组每一个元素为一个数组
@@ -46,10 +44,10 @@ function markValid(situation,board,piece){}
 /*调用markValid*/
 function markAttack(situation,board,side){
     resetBoard(board);
-    if(side == 0){        //黑方
+    if(side === 0){        //黑方
         for(let i = 1 ; i <= 8 ; ++i) {
             for (let j = 1; j <= 8; ++j){
-                if(situation[i][j][0] == 'b') {
+                if(situation[i][j][0] === 'b') {
                     piece.type=situation[i][j];
                     piece.x=i;
                     piece.y=j;
@@ -58,10 +56,10 @@ function markAttack(situation,board,side){
             }
         }
     }
-    else if(side == 1){   //白方
+    else if(side === 1){   //白方
         for(let i = 1 ; i <= 8 ; ++i) {
             for (let j = 1; j <= 8; ++j){
-                if(situation[i][j][0] == 'w'){
+                if(situation[i][j][0] === 'w'){
                     piece.type=situation[i][j];
                     piece.x=i;
                     piece.y=j;

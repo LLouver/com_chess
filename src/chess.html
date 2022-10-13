@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="js/piece.js"></script>
 	<script type="text/javascript" src="js/commandAnalysis.js"></script>
 	<script type="text/javascript" src="js/socket.js"></script>
+	<script type="text/javascript" src="js/chessGame.js"></script>
 	<link type="text/css" href="css/main.css" rel="stylesheet">
 	<link type="text/css" href="css/piece.css" rel="stylesheet">
 	<script>
@@ -19,7 +20,7 @@
         var started=0;//记录游戏是否已经开始
         var pieceChose=0;//记录是否选中了一个棋子
         var movable=0;//记录现在是不是自己的回合，能不能移动棋子
-        var gameSitu;//记录局面
+        var gameSitu=[];//记录局面
         var board1,board2;//辅助数组，用于标记各种被攻击，可走到的位置。
         var side=1;//表示游戏者方向，1白0黑
         var restTime=300;//表示局时
@@ -68,7 +69,10 @@
     window.onresize=resetBorderSize;
     resetBorderSize();
     //初始化棋盘
-    
+    for(let i = 1 ; i <= 8 ; ++i){
+        //数组从位置1开始，位置0直接为空，不用管
+        gameSitu[i]=[]; //数组每一个元素为一个数组
+    }
     //delPiece(3,5);
     showJoinBoard(1);
 </script>

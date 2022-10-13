@@ -18,6 +18,7 @@ function join(id,name){
     }
     document.getElementById('mainBoard').hidden=false;
     showMainBoard();
+    showPlayerName();
 }
 
 function accept(name,sideChose){
@@ -56,7 +57,8 @@ function begin(){
         movable=1;
     }
     initSituation(gameSitu);
-
+    console.log(gameSitu);
+    showSituation(gameSitu);
 }
 
 //设置开始标志并重置比赛
