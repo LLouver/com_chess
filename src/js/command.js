@@ -12,7 +12,7 @@ function host(id,sideChose){
 function setReady(s,swi){
     ready[s]=swi;
     if(ready[0] && ready[1]){
-        request();//启动游戏
+        doRequest();//启动游戏
     }
 }
 
@@ -48,5 +48,6 @@ function move(lx,ly,cx,cy){
 }
 
 function sendReadyRequest(){
-    request();//发送请求
+    doRequest();//发送请求
 }
+

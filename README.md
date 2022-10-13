@@ -7,7 +7,7 @@
 从[1][1]到[8][8]，第一维代表行数，第二维代表列数，根据双方角色不同，实际可能要旋转180度
 ```
 
-<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fss2.meipian.me%2Fusers%2F46251981%2F028b120f917749339f0e531a827e470d.jpg%3Fmeipian-raw%2Fbucket%2Fivwen%2Fkey%2FdXNlcnMvNDYyNTE5ODEvMDI4YjEyMGY5MTc3NDkzMzlmMGU1MzFhODI3ZTQ3MGQuanBn%2Fsign%2F697c633bbcf3565667aa4d0832c8dd18.jpg&refer=http%3A%2F%2Fss2.meipian.me&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668157576&t=ecb47aeff75aa12f23b6df53fa95f4ce" />
+<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fss2.meipian.me%2Fusers%2F46251981%2F028b120f917749339f0e531a827e470d.jpg%3Fmeipian-raw%2Fbucket%2Fivwen%2Fkey%2FdXNlcnMvNDYyNTE5ODEvMDI4YjEyMGY5MTc3NDkzMzlmMGU1MzFhODI3ZTQ3MGQuanBn%2Fsign%2F697c633bbcf3565667aa4d0832c8dd18.jpg&refer=http%3A%2F%2Fss2.meipian.me&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1668157576&t=ecb47aeff75aa12f23b6df53fa95f4ce"  alt="unknown"/>
 
 ### 通讯指令
 ```txt
@@ -58,7 +58,7 @@ function end(side,reason){}
 function myTurn(){}
 
 //玩家进行了一步合法行棋，执行相应的动画，画动画，同时加上相应步时
-function mymove(lx,ly,cx,cy){}
+function myMove(lx,ly,cx,cy){}
 
 //无论是鼠标还是键盘操作都要发送move和turn指令
 //鼠标点击了一个位置，表示选中一个棋子或移动到一个位置，
@@ -96,7 +96,7 @@ function move(lx,ly,cx,cy){}
 
 ### chessGame.js
 
-``` js
+```js
 //chessGame.js
 //内部操作
 "use strict";
@@ -133,8 +133,12 @@ var ready=[0,0];//记录双方准备状况
 var started=0;//记录游戏是否已经开始
 var pieceChose=0;//记录是否选中了一个棋子
 var movable=0;//记录现在是不是自己的回合，能不能移动棋子
+//gameSitu是一个9*9的数组，下标从[1][1]到[8][8]记录了第i行第j列的棋子是什么
+//数组元素是'KQRNBP kqrnbp'之一,大写表白小写表黑，空格表没有棋子
 var gameSitu;//记录局面
+//board也是9*9的数组，数组元素是一个整数,0表示被一般,1表示可达,2表示可达且可攻击
 var board;//辅助数组，用于标记各种被攻击，可走到的位置。
+//kingPos.x kingPos.y分别记录了国王的位置横纵坐标
 var kingPos;//记录国王的位置
 ```
 

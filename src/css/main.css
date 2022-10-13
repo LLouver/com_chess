@@ -1,9 +1,11 @@
+/*棋盘区域*/
 #mainBoard{
     background-color: white;
     position: absolute;
     left: 10%;
     top: 15%;
 }
+/*棋盘*/
 #board{
     background-color: green;
     width: 70%;
@@ -20,7 +22,7 @@
     grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
 }
 
-
+/*格子*/
 .cell{
     text-align: center;
     padding: 0;
@@ -32,4 +34,13 @@
 }
 .white{
     background-color: #eeeed2;
+}
+.highBlack{
+    background-color: #bbcb2b;
+}
+.highWhite{
+    background-color: #f7f72b;
+}
+.warning{
+    background-color: #f53f35;
 }

@@ -14,7 +14,7 @@ function end(side,reason){}
 function myTurn(){}
 
 //玩家进行了一步合法行棋，执行相应的动画，画动画，同时加上相应步时
-function mymove(lx,ly,cx,cy){}
+function myMove(lx,ly,cx,cy){}
 
 //无论是鼠标还是键盘操作都要发送move和turn指令
 //鼠标点击了一个位置，表示选中一个棋子或移动到一个位置，

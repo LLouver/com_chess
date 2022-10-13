@@ -31,21 +31,30 @@
 <div id="readyButton" onclick="sendReadyRequest()">准备</div>
 <div id="settingButton"></div>
 
+<div id="inputBlock" hidden="hidden">
+	输入框
+	<label>
+		<input id="input">
+	</label>
+	<div id="hostButton" class="button">加入！</div>
+	<div id="joinButton" class="button">主持！</div>
+</div>
+
 <script>
     "use strict";
     //当浏览器大小改变时，重设棋盘大小
     window.onresize=resetBorderSize;
     resetBorderSize();
     //初始化棋盘
-    for(let i = 1 ; i <= 8 ; ++ i){
+    for(let i = 8 ; i >= 1 ; -- i){
         for(let j = 1 ; j <= 8 ; ++ j){
             let id = 'cell'+i+j;
             let c = "<div id="+id+" class='cell " + ((i+j)%2===1?"white":"black") + "'>" +i +" " +j + "</div>";
             document.getElementById("board").innerHTML += c;
-            console.log("added" + i + j);
+            //console.log("added" + i + j);
         }
     }
-    let s="cell11";
+    let s="cell33";
     document.getElementById(s).innerHTML="<div class='piece bq'></div>";
 </script>
 
