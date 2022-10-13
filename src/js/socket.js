@@ -8,22 +8,22 @@ Chat.connect = function(host) {
     } else if ('MozWebSocket' in window) {
         Chat.socket = new MozWebSocket(host);
     } else {
-        Console.log('Error: WebSocket is not supported by this browser.');
+        console.log('Error: WebSocket is not supported by this browser.');
         return;
     }
 
     Chat.socket.onopen = function () {
-        Console.log('Info: WebSocket connection opened.');
-        document.getElementById('chat').onkeydown = function(event) {
+        console.log('Info: WebSocket connection opened.');
+        /*document.getElementById('chat').onkeydown = function(event) {
             if (event.keyCode === 13) {
                 Chat.sendMessage();
             }
-        };
+        };*/
     };
 
     Chat.socket.onclose = function () {
-        document.getElementById('chat').onkeydown = null;
-        Console.log('Info: WebSocket closed.');
+        //document.getElementById('chat').onkeydown = null;
+        console.log('Info: WebSocket closed.');
     };
 
     Chat.socket.onmessage = function (message) {
@@ -55,6 +55,8 @@ Chat.sendMessage = function() {
     doRequest(document.getElementById('chat').value);
 };
 
+Chat.initialize();
+/*
 var Console = {};
 
 Console.log = function(message) {
@@ -69,7 +71,7 @@ Console.log = function(message) {
     console.scrollTop = console.scrollHeight;
 };
 
-Chat.initialize();
+
 
 document.addEventListener("DOMContentLoaded", function() {
     // Remove elements with "noscript" class - <noscript> is not allowed in XHTML
@@ -78,3 +80,5 @@ document.addEventListener("DOMContentLoaded", function() {
         noScripts[i].parentNode.removeChild(noScripts[i]);
     }
 }, false);
+
+*/

@@ -6,38 +6,60 @@
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/style.js"></script>
 	<script type="text/javascript" src="js/command.js"></script>
+	<script type="text/javascript" src="js/piece.js"></script>
+	<script type="text/javascript" src="js/commandAnalysis.js"></script>
+	<script type="text/javascript" src="js/socket.js"></script>
 	<link type="text/css" href="css/main.css" rel="stylesheet">
 	<link type="text/css" href="css/piece.css" rel="stylesheet">
 	<script>
-		var gameId=0;
+        var gameId='0';//游戏唯一识别id
+        var playerName=['null','null'];//记录双方的名字
+        var isHost=0;//记录是否是host
         var ready=[0,0];//记录双方准备状况
         var started=0;//记录游戏是否已经开始
         var pieceChose=0;//记录是否选中了一个棋子
         var movable=0;//记录现在是不是自己的回合，能不能移动棋子
         var gameSitu;//记录局面
-        var board;//辅助数组，用于标记各种被攻击，可走到的位置。
-        var side=1;
+        var board1,board2;//辅助数组，用于标记各种被攻击，可走到的位置。
+        var side=1;//表示游戏者方向，1白0黑
+        var restTime=300;//表示局时
+        var stepTime=60;//表示步时
 	</script>
 </head>
 
 <body style="background-color: #312e2b">
 
 
-<div id="mainBoard">
+<div id="mainBoard" hidden>
 	<div id="enemyPlayer" class="player">Opponent</div>
 	<div id="board"></div>
 	<div id="selfPlayer" class="player">Me</div>
 </div>
-<div id="readyButton" onclick="sendReadyRequest()">准备</div>
-<div id="settingButton"></div>
+<div id="readyButton" onclick="clickReady()">准备</div>
 
-<div id="inputBlock" hidden="hidden">
-	输入框
-	<label>
-		<input id="input">
+<div id="settingButton">设置时间</div>
+
+<div id="inputBlock" hidden = "hidden">
+	<div style="margin: auto">加入或主持一场比赛</div>
+	<label style="margin: auto">
+		昵 称 <input id="inputPlayerName" >
 	</label>
-	<div id="hostButton" class="button">加入！</div>
-	<div id="joinButton" class="button">主持！</div>
+	<label style="margin: auto">
+		房 间 <input id="inputGameId">
+	</label>
+
+	<div style="margin: auto; width: 50%; height: 40%; display: flex ; flex-direction: row; justify-content: space-around">
+		<div id="hostButton" class="button" onclick="clickJoin()" style="display: flex ; flex-direction: row; justify-content: space-around">加入！</div>
+		<div id="joinButton" class="button" onclick="clickHost()" style="display: flex ; flex-direction: row; justify-content: space-around">主持！</div>
+	</div>
+
+</div>
+
+<div id="chooseBlock" hidden>
+	<div style=" height:20%; display: flex;margin-top:30%; flex-direction: row; justify-content: space-around">
+		<div id="chooseButton0" class="button" onclick="clickChose(0)" style="display: flex ; flex-direction: row; justify-content: space-around">执白</div>
+		<div id="chooseButton1" class="button" onclick="clickChose(1)" style="display: flex ; flex-direction: row; justify-content: space-around">执黑</div>
+	</div>
 </div>
 
 <script>
@@ -46,16 +68,9 @@
     window.onresize=resetBorderSize;
     resetBorderSize();
     //初始化棋盘
-    for(let i = 8 ; i >= 1 ; -- i){
-        for(let j = 1 ; j <= 8 ; ++ j){
-            let id = 'cell'+i+j;
-            let c = "<div id="+id+" class='cell " + ((i+j)%2===1?"white":"black") + "'>" +i +" " +j + "</div>";
-            document.getElementById("board").innerHTML += c;
-            //console.log("added" + i + j);
-        }
-    }
-    let s="cell33";
-    document.getElementById(s).innerHTML="<div class='piece bq'></div>";
+    
+    //delPiece(3,5);
+    showJoinBoard(1);
 </script>
 
 </body>
