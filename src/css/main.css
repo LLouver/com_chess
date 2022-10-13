@@ -1,9 +1,11 @@
+/*棋盘区域*/
 #mainBoard{
     background-color: white;
     position: absolute;
     left: 10%;
     top: 15%;
 }
+/*棋盘*/
 #board{
     background-color: green;
     width: 70%;
@@ -20,7 +22,7 @@
     grid-template-rows: 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5% 12.5%;
 }
 
-
+/*格子*/
 .cell{
     text-align: center;
     padding: 0;
@@ -32,4 +34,61 @@
 }
 .white{
     background-color: #eeeed2;
+}
+.highBlack{
+    background-color: #bbcb2b;
+}
+.highWhite{
+    background-color: #f7f72b;
+}
+.warning{
+    background-color: #f53f35;
+}
+
+#inputBlock{
+    background-color: #312e2b;
+    color:whitesmoke;
+    position: absolute;
+    left: 20%;
+    top:20%;
+    height: 50%;
+    width:50%;
+}
+#chooseBlock{
+    background-color: #312e2b;
+    color:whitesmoke;
+    position: absolute;
+    left: 20%;
+    top:20%;
+    height: 50%;
+    width:50%;
+}
+
+input{
+    width: 70%;
+    height: 30px;
+    color:whitesmoke;
+    background-color: #312e2b;
+    border-radius: 15px;
+    border: dimgray 1px solid;
+}
+
+.button{
+    margin: auto;
+    background-color: black;
+    border: dimgray 3px solid;
+    width: 20%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#readyButton{
+    color: #f7f72b;
+    background-color:dimgray ;
+    border-radius: 8px;
+    height: 20px;
+    width: 80px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
