@@ -5,8 +5,19 @@
 	<title>Chess</title>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/style.js"></script>
+	<script type="text/javascript" src="js/command.js"></script>
 	<link type="text/css" href="css/main.css" rel="stylesheet">
 	<link type="text/css" href="css/piece.css" rel="stylesheet">
+	<script>
+		var gameId=0;
+        var ready=[0,0];//记录双方准备状况
+        var started=0;//记录游戏是否已经开始
+        var pieceChose=0;//记录是否选中了一个棋子
+        var movable=0;//记录现在是不是自己的回合，能不能移动棋子
+        var gameSitu;//记录局面
+        var board;//辅助数组，用于标记各种被攻击，可走到的位置。
+        var side=1;
+	</script>
 </head>
 
 <body style="background-color: #312e2b">
@@ -17,6 +28,8 @@
 	<div id="board"></div>
 	<div id="selfPlayer" class="player">Me</div>
 </div>
+<div id="readyButton" onclick="sendReadyRequest()">准备</div>
+<div id="settingButton"></div>
 
 <script>
     "use strict";

@@ -1,6 +1,10 @@
 //chessGame.js
 //内部操作
 "use strict";
+
+//初始化局面
+function initSituation(situation){}
+
 //选定了一个棋子，标出他能走到的格子和能攻击的格子
 function markValid(situation,board,piece){}
 

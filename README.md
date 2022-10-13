@@ -1,6 +1,7 @@
 # com_chess - 计科导大作业1
 
-# 棋盘
+# 棋盘 1-白White 0-黑Black
+# 王King 后Queen 车Castle 马kNight 象Bishop 兵Pawn
 
 ```txt
 从[1][1]到[8][8]，第一维代表行数，第二维代表列数，根据双方角色不同，实际可能要旋转180度
@@ -10,12 +11,12 @@
 
 ### 通讯指令
 ```txt
-/host id
+/host id side 
     //主持一局游戏，id为游戏唯一识别编号
 //只有id匹配才执行下面的指令
-/settime id 200 30 
+/settime id side 200 30 
     //设置局时、步时分别为200s，30s
-/ready id b 1
+/ready id side b 1
     //side:1白0黑 b:1-准备/0-取消准备
 /begin id 
     //比赛开始
@@ -90,6 +91,7 @@ function end(){}
 //收到移动指令（对方），画出动画，判定胜负，如果继续则将走棋标记设为true,执行自己回合的函数
 function move(lx,ly,cx,cy){}
 
+//随时补充各种发送操作的函数
 ```
 
 ### chessGame.js
@@ -127,10 +129,12 @@ function isCheckmate(situation,side){}
 ### global
 
 ```js
+var ready=[0,0];//记录双方准备状况
 var started=0;//记录游戏是否已经开始
-var pieceChoosed=0;//记录是否选中了一个棋子
+var pieceChose=0;//记录是否选中了一个棋子
 var movable=0;//记录现在是不是自己的回合，能不能移动棋子
-var gamesitu;//记录局面
+var gameSitu;//记录局面
 var board;//辅助数组，用于标记各种被攻击，可走到的位置。
+var kingPos;//记录国王的位置
 ```
 
