@@ -37,21 +37,20 @@ function resetBoard(board){
 
 /*以下为需要实现的基本函数*/
 
-//选定了一个棋子，标出他能走到的格子和能攻击的格子
-function markValid(situation,board,piece){}
+//选定了一个棋子，标出他能攻击的格子
+function markAttack(situation,board,piece){}
+
 
 //标记出某方棋子可以攻击的所有格子，包括国王攻击
 /*调用markValid*/
-function markAttack(situation,board,side){
+function markAttackAll(situation,board,side){
     resetBoard(board);
     if(side === 0){        //黑方
         for(let i = 1 ; i <= 8 ; ++i) {
             for (let j = 1; j <= 8; ++j){
                 if(situation[i][j][0] === 'b') {
-                    piece.type=situation[i][j];
-                    piece.x=i;
-                    piece.y=j;
-                    markValid(situation, board, piece);
+                    let piece={type:situation[i][j],x:i,y:j};
+                    markAttack(situation, board, piece);
                 }
             }
         }
@@ -60,10 +59,8 @@ function markAttack(situation,board,side){
         for(let i = 1 ; i <= 8 ; ++i) {
             for (let j = 1; j <= 8; ++j){
                 if(situation[i][j][0] === 'w'){
-                    piece.type=situation[i][j];
-                    piece.x=i;
-                    piece.y=j;
-                    markValid(situation, board, piece);
+                    let piece={type:situation[i][j],x:i,y:j};
+                    markAttack(situation, board, piece);
                 }
             }
         }
@@ -71,13 +68,6 @@ function markAttack(situation,board,side){
     else return false;
 }
 
-//检查某一步棋是否合法（不仅不能走到其它格子，而且不能送将）
-/*调用markAttack*/
-function invalidMove(situation,board,piece,x,y){}
-
-//检查某方是否无路可走
-/*调用markAttack*/
-function isEven(situation,side){}
 
 //检查某方是否将军（A将军，B被将军
 /*调用markAttack*/
@@ -94,6 +84,15 @@ function isCheck(situation,side){
                 return true;
     return false;
 }
+
+
+//检查某一步棋是否合法（不仅不能走到其它格子，而且不能送将）
+/*调用markAttack*/
+function invalidMove(situation,board,piece,x,y){}
+
+//检查某方是否无路可走
+/*调用markAttack*/
+function isEven(situation,side){}
 
 //（已知某方将军）检查某方是否将对方将杀（检查B能否应将
 /*调用isCheck*/

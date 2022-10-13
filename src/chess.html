@@ -21,7 +21,8 @@
         var pieceChose=0;//记录是否选中了一个棋子
         var movable=0;//记录现在是不是自己的回合，能不能移动棋子
         var gameSitu=[];//记录局面
-        var board1,board2;//辅助数组，用于标记各种被攻击，可走到的位置。
+        var attackBlack,attackWhite;//辅助数组，用于标记各种被攻击，可走到的位置。
+        var moveBlack,moveWhite;//辅助数组，用于标记各种被攻击，可走到的位置。
         var side=1;//表示游戏者方向，1白0黑
         var restTime=300;//表示局时
         var stepTime=60;//表示步时
