@@ -45,7 +45,7 @@ var stepTime=60;//表示步时
     //side:1白0黑 b:1-准备/0-取消准备
 /end id info
     //游戏结束，1-白胜 0-黑胜 e-平 info:(0：将杀 1：认输 2：超时)
-/
+/move id lx ly cx cy
     
 
 ```

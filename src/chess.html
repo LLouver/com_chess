@@ -10,6 +10,7 @@
 	<script type="text/javascript" src="js/commandAnalysis.js"></script>
 	<script type="text/javascript" src="js/socket.js"></script>
 	<script type="text/javascript" src="js/chessGame.js"></script>
+	<script type="text/javascript" src="js/animation.js"></script>
 	<link type="text/css" href="css/main.css" rel="stylesheet">
 	<link type="text/css" href="css/piece.css" rel="stylesheet">
 	<script>
@@ -30,11 +31,13 @@
         //记录局面
         var gameSitu=[];
         //辅助数组，用于标记各种被攻击，可走到的位置。
-        var attackBlack,attackWhite;
+        var attackInfo=[];
         //辅助数组，用于标记各种被攻击，可走到的位置。
-        var moveBlack,moveWhite;
+        var moveInfo=[];
         //表示游戏者方向，1白0黑
         let side=1;
+        //表示当前选中的棋子坐标，[0,0]表示没选
+		let chosenPiece=1;
         //表示局时
         var restTime=300;
         //表示步时
