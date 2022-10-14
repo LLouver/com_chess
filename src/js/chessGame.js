@@ -41,12 +41,20 @@ function resetBoard(board){
 function markAttack(situation,board,piece){
     if(piece.type[1] === "p"){
         if(piece.type[0] === "b"){
-            board[piece.x - 1][piece.y - 1] = 1;
-            board[piece.x - 1][piece.y + 1] = 1;
+            if((piece.x - 1) >= 1) {
+                if((piece.y - 1) >= 1)
+                    board[piece.x - 1][piece.y - 1] = 1;
+                if((piece.y + 1) <= 8)
+                    board[piece.x - 1][piece.y + 1] = 1;
+            }
         }
         else if(piece.type[0] === "w"){
-            board[piece.x + 1][piece.y - 1] = 1;
-            board[piece.x + 1][piece.y + 1] = 1;
+            if((piece.x + 1) <= 8) {
+                if((piece.y - 1) >= 1)
+                    board[piece.x + 1][piece.y - 1] = 1;
+                if((piece.y + 1) <= 8)
+                    board[piece.x + 1][piece.y + 1] = 1;
+            }
         }
     }
     else if(piece.type[1] === "r"){
