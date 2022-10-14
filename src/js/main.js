@@ -38,7 +38,10 @@ function showSideChoose(swi){
     }
 }
 function showMainBoard(){
+    document.getElementById("board").innerHTML='';
+    //console.log("side " + side);
     if(side) {
+        console.log("side 1 " + side);
         for (let i = 8; i >= 1; --i) {
             for (let j = 1; j <= 8; ++j) {
                 let id = 'cell' + i + j;
@@ -49,6 +52,7 @@ function showMainBoard(){
         }
     }
     else{
+        console.log("side 0 " + side);
         for (let i = 1; i <= 8; ++i) {
             for (let j = 8; j >= 1; --j) {
                 let id = 'cell' + i + j;

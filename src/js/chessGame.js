@@ -72,23 +72,11 @@ function markAttackAll(situation,board,side){
 //检查某方是否将军（A将军，B被将军
 /*调用markAttack*/
 function isCheck(situation,side){
-    let board;
-    board=[];
-    for(let i = 1 ; i <= 8 ; ++i)
-        board[i]=[];
-    resetBoard(board);
-    markAttack(situation,board,side);
-    for(let i = 1 ; i <= 8 ; ++i)
-        for(let j = 1 ; j <= 8 ; ++j)
-            if(board[i][j]==2)
-                return true;
-    return false;
 }
 
-
-//检查某一步棋是否合法（不仅不能走到其它格子，而且不能送将）
+//在board中标出一个棋子能移动到的其它格子（不能走到不符合正常走法规则的格子，而且不能送将）
 /*调用markAttack*/
-function invalidMove(situation,board,piece,x,y){}
+function markValidMove(situation,board,piece){}
 
 //检查某方是否无路可走
 /*调用markAttack*/

@@ -4,7 +4,7 @@
 //设置游戏id
 function host(id,name,sideChose){
     gameId=id;
-    side=sideChose;
+    side=parseInt(sideChose);
     playerName[side]=name;
     isHost=1;
     document.getElementById('selfPlayer').innerHTML=name;
@@ -17,22 +17,22 @@ function join(id,name){
         playerName[side^1]=name;
     }
     document.getElementById('mainBoard').hidden=false;
-    showMainBoard();
+    //showMainBoard();
     showPlayerName();
 }
 
 function accept(name,sideChose){
     console.log(name+sideChose);
     if(!isHost){
-        side=sideChose;
+        side=parseInt(sideChose);
         playerName[side^1]=name;
-        console.log("modified");
+        console.log("play " + side);
     }
     showJoinBoard(0);
     document.getElementById('mainBoard').hidden=false;
     console.log(playerName);
     showPlayerName();
-    showMainBoard();
+    //showMainBoard();
 }
 
 //准备/取消准备，发送/ready
@@ -40,7 +40,7 @@ function accept(name,sideChose){
 function setReady(s,swi){
     ready[s]=swi;
     if(ready[0] && ready[1]){
-        doRequest('/begin ' + gameId);//启动游戏
+        begin();
     }
 }
 
@@ -51,11 +51,13 @@ function setTime(a,b){
 
 //设置开始标志并且激活白方走棋
 function begin(){
+    console.log("began!")
     started=1;
     ready[0]=ready[1]=0;
     if(side===1){
         movable=1;
     }
+    showMainBoard();
     initSituation(gameSitu);
     console.log(gameSitu);
     showSituation(gameSitu);
