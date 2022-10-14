@@ -38,7 +38,159 @@ function resetBoard(board){
 /*以下为需要实现的基本函数*/
 
 //选定了一个棋子，标出他能攻击的格子
-function markAttack(situation,board,piece){}
+function markAttack(situation,board,piece){
+    if(piece.type[1] === "p"){
+        if(piece.type[0] === "b"){
+            board[piece.x - 1][piece.y - 1] = 1;
+            board[piece.x - 1][piece.y + 1] = 1;
+        }
+        else if(piece.type[0] === "w"){
+            board[piece.x + 1][piece.y - 1] = 1;
+            board[piece.x + 1][piece.y + 1] = 1;
+        }
+    }
+    else if(piece.type[1] === "r"){
+        for(let i = 1; i <= 8 - piece.x; i++) {
+            board[piece.x + i][piece.y] = 1;
+            if(situation[piece.x + i][piece.y] !== "  ")
+                break;
+        }
+        for(let i = 1; i <= piece.x - 1; i--) {
+            board[piece.x - i][piece.y] = 1;
+            if(situation[piece.x - i][piece.y] !== "  ")
+                break;
+        }
+        for(let j = 1; j <= 8 - piece.y; j++) {
+            board[piece.x][piece.y + j] = 1;
+            if(situation[piece.x][piece.y + j] !== "  ")
+                break;
+        }
+        for(let j = 1; j <= piece.y - 1; j--) {
+            board[piece.x][piece.y - j] = 1;
+            if(situation[piece.x][piece.y - j] !== "  ")
+                break;
+        }
+    }
+    else if(piece.type[1] === "n"){
+        if((piece.x + 1) <= 8 && (piece.y + 2) <= 8)
+            board[piece.x + 1][piece.y + 2] = 1;
+        if((piece.x + 1) <= 8 && (piece.y - 2) >= 1)
+            board[piece.x + 1][piece.y - 2] = 1;
+        if((piece.x - 1) >= 1 && (piece.y + 2) <= 8)
+            board[piece.x - 1][piece.y + 2] = 1;
+        if((piece.x - 1) >= 1 && (piece.y - 2) >= 1)
+            board[piece.x - 1][piece.y - 2] = 1;
+        if((piece.x + 2) <= 8 && (piece.y + 1) <= 8)
+            board[piece.x + 2][piece.y + 1] = 1;
+        if((piece.x + 2) <= 8 && (piece.y - 1) >= 1)
+            board[piece.x + 2][piece.y - 1] = 1;
+        if((piece.x - 2) >= 1 && (piece.y + 1) <= 8)
+            board[piece.x - 2][piece.y + 1] = 1;
+        if((piece.x - 2) >= 1 && (piece.y - 1) >= 1)
+            board[piece.x - 2][piece.y - 1] = 1;
+    }
+    else if(piece.type[1] === "b"){
+        let i = piece.x, j = piece.y;
+        while(i <= 8 && j <= 8) {
+            i++;
+            j++;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+        while(i >= 1 && j <= 8) {
+            i--;
+            j++;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+        while(i <= 8 && j >= 1) {
+            i++;
+            j--;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+        while(i >= 1 && j >= 1) {
+            i--;
+            j--;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+    }
+    else if(piece.type[1] === "q"){
+        for(let i = 1; i <= 8 - piece.x; i++) {
+            board[piece.x + i][piece.y] = 1;
+            if(situation[piece.x + i][piece.y] !== "  ")
+                break;
+        }
+        for(let i = 1; i <= piece.x - 1; i--) {
+            board[piece.x - i][piece.y] = 1;
+            if(situation[piece.x - i][piece.y] !== "  ")
+                break;
+        }
+        for(let j = 1; j <= 8 - piece.y; j++) {
+            board[piece.x][piece.y + j] = 1;
+            if(situation[piece.x][piece.y + j] !== "  ")
+                break;
+        }
+        for(let j = 1; j <= piece.y - 1; j--) {
+            board[piece.x][piece.y - j] = 1;
+            if(situation[piece.x][piece.y - j] !== "  ")
+                break;
+        }
+
+        let i = piece.x, j = piece.y;
+        while(i <= 8 && j <= 8) {
+            i++;
+            j++;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+        while(i >= 1 && j <= 8) {
+            i--;
+            j++;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+        while(i <= 8 && j >= 1) {
+            i++;
+            j--;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+        while(i >= 1 && j >= 1) {
+            i--;
+            j--;
+            board[i][j] = 1;
+            if(situation[i][j] !== "  ")
+                break;
+        }
+    }
+    else if(piece.type[1] === "k"){
+        if((piece.x + 1) <= 8)
+            board[piece.x + 1][piece.y] = 1;
+        if((piece.x - 1) >= 1)
+            board[piece.x - 1][piece.y] = 1;
+        if((piece.y + 1) <= 8)
+            board[piece.x][piece.y + 1] = 1;
+        if((piece.y - 1) >= 1)
+            board[piece.x][piece.y - 1] = 1;
+        if((piece.x + 1) <= 8 && (piece.y + 1) <= 8)
+            board[piece.x + 1][piece.y + 1] = 1;
+        if((piece.x - 1) >= 1 && (piece.y - 1) >= 1)
+            board[piece.x - 1][piece.y - 1] = 1;
+        if((piece.x - 1) >= 1 && (piece.y + 1) <= 8)
+            board[piece.x - 1][piece.y + 1] = 1;
+        if((piece.x + 1) <= 8 && (piece.y - 1) >= 1)
+            board[piece.x + 1][piece.y - 1] = 1;
+    }
+}
 
 
 //标记出某方棋子可以攻击的所有格子，包括国王攻击
