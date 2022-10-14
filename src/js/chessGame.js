@@ -44,6 +44,7 @@ function markAttack(situation,board,piece){}
 //标记出某方棋子可以攻击的所有格子，包括国王攻击
 /*调用markValid*/
 function markAttackAll(situation,side){
+    
     if(side === 0){        //黑方
         resetBoard(attackBlack);
         for(let i = 1 ; i <= 8 ; ++i) {
