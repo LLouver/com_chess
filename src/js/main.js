@@ -38,33 +38,44 @@ function showSideChoose(swi){
     }
 }
 function showMainBoard(){
+    document.getElementById("board").innerHTML='';
+    //console.log("side " + side);
     if(side) {
+        console.log("side 1 " + side);
         for (let i = 8; i >= 1; --i) {
             for (let j = 1; j <= 8; ++j) {
-                let id = 'cell' + i + j;
-                let c = "<div id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + i + " " + j + "</div>";
+                let id = '"cell' + i + j + '"';
+                let c = "<div onclick='onClicked(" + i + ',' + j + ")' id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + i + " " + j + "</div>";
                 document.getElementById("board").innerHTML += c;
-                //console.log("added" + i + j);
             }
         }
     }
     else{
+        console.log("side 0 " + side);
         for (let i = 1; i <= 8; ++i) {
             for (let j = 8; j >= 1; --j) {
-                let id = 'cell' + i + j;
-                let c = "<div id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + i + " " + j + "</div>";
+                let id = '"cell' + i + j + '"';
+                let c = "<div onclick='onClicked(" + i + ',' + j + ")' id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + i + " " + j + "</div>";
                 document.getElementById("board").innerHTML += c;
-                //console.log("added" + i + j);
             }
         }
     }
-    /*用于测试
-    addPiece(3,4,'bq');
-    showHighlight(3,3);
-    showHighlight(3,4);
-    showNormal(3,3);
-    showWarning(3,5);
-    addPiece(3,5,'wk');*/
+    moveInfo[0]=[];
+    moveInfo[1]=[];
+    attackInfo[0]=[];
+    attackInfo[1]=[];
+    for (let i = 1; i <= 8; ++i) {
+        moveInfo[0][i]=[];
+        moveInfo[1][i]=[];
+        attackInfo[0][i]=[];
+        attackInfo[1][i]=[];
+        for (let j = 1; j <= 8; ++j) {
+            moveInfo[0][i][j]=0;
+            moveInfo[1][i][j]=0;
+            attackInfo[0][i][j]=0;
+            attackInfo[1][i][j]=0;
+        }
+    }
 }
 //显示/隐藏时间设置框，隐藏时发送/setTime
 function showTimeSetting(swi){}

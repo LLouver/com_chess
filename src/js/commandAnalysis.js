@@ -43,11 +43,6 @@ function doReceive(s){
                 return;
             setReady(args[2],args[3]);
             break;
-        case '/begin'://id
-            if(args[1]!==gameId)
-                return;
-            begin();
-            break;
         case '/end'://id info
             if(args[1]!==gameId)
                 return;

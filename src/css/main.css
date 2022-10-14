@@ -44,6 +44,9 @@
 .warning{
     background-color: #f53f35;
 }
+.chosen{
+    border: 5px purple solid;
+}
 
 #inputBlock{
     background-color: #312e2b;
