@@ -27,7 +27,7 @@ function showMovable(x,y,swi){
 }
 
 //对piece的操作
-function canselChoosePiece(){
+function cancelChoosePiece(){
     chosenPiece[0]=chosenPiece[1]=0;
     for(let i = 1 ; i <= 8 ; ++ i){
         for(let j = 1 ; j <= 8 ; ++ j){
