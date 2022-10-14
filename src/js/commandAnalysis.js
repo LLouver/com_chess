@@ -48,6 +48,12 @@ function doReceive(s){
                 return;
             end(args[2]);
             break;
+        case '/move'://id lx ly cx xy side
+            if(args[1]!==gameId)
+                return;
+            console.log("move" + args);
+            move(args[2],args[3],args[4],args[5],args[6]);
+            break;
     }
 }
 

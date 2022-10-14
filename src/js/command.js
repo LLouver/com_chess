@@ -70,9 +70,10 @@ function end(info){
 }
 
 //收到移动指令（对方），画出动画，判定胜负，如果继续则将走棋标记设为true,执行自己回合的函数
-function move(lx,ly,cx,cy){
+function move(lx,ly,cx,cy,enemySide){
     drawAnimation(lx,ly,cx,cy);
-    movable=1;
+    if(side !== parseInt(enemySide))
+        movable=1;
     if(isEven()){
 
     }
