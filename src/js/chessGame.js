@@ -43,24 +43,25 @@ function markAttack(situation,board,piece){}
 
 //标记出某方棋子可以攻击的所有格子，包括国王攻击
 /*调用markValid*/
-function markAttackAll(situation,board,side){
-    resetBoard(board);
+function markAttackAll(situation,side){
     if(side === 0){        //黑方
+        resetBoard(attackBlack);
         for(let i = 1 ; i <= 8 ; ++i) {
             for (let j = 1; j <= 8; ++j){
                 if(situation[i][j][0] === 'b') {
                     let piece={type:situation[i][j],x:i,y:j};
-                    markAttack(situation, board, piece);
+                    markAttack(situation, attackBlack, piece);
                 }
             }
         }
     }
     else if(side === 1){   //白方
+        resetBoard(attackWhite);
         for(let i = 1 ; i <= 8 ; ++i) {
             for (let j = 1; j <= 8; ++j){
                 if(situation[i][j][0] === 'w'){
                     let piece={type:situation[i][j],x:i,y:j};
-                    markAttack(situation, board, piece);
+                    markAttack(situation, attackWhite, piece);
                 }
             }
         }
@@ -69,9 +70,25 @@ function markAttackAll(situation,board,side){
 }
 
 
-//检查某方是否将军（A将军，B被将军
-/*调用markAttack*/
+//检查某方是否将军（side将军，side^1被将军
+/*调用markAttackAll*/
 function isCheck(situation,side){
+    markAttackAll(situation,side);
+    for(let i = 1 ; i <= 8 ; ++i) {
+        for (let j = 1; j <= 8; ++j) {
+            if(side === 0){ //黑
+                if(attackBlack[i][j] && situation[i][j][2] === 'k')
+                    return true;
+            }
+            else{ //白
+                if(attackWhite[i][j] && situation[i][j][2] === 'k')
+                    return true;
+            }
+            if(situation[i][j][2] === 'k')
+                return false;
+        }
+    }
+    return false;
 }
 
 //在board中标出一个棋子能移动到的其它格子（不能走到不符合正常走法规则的格子，而且不能送将）
