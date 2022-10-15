@@ -212,12 +212,13 @@ function markAttackAll(situation,side){
 //检查某方是否将军（side将军，side^1被将军
 /*调用markAttackAll*/
 function isCheck(situation,side){
+    let str=side?'bk':'wk';
     markAttackAll(situation,side);
     for(let i = 1 ; i <= 8 ; ++i) {
         for (let j = 1; j <= 8; ++j) {
-            if(attackInfo[side][i][j] && situation[i][j][2] === 'k')
+            if(attackInfo[side][i][j] && situation[i][j] === str)
                 return true;
-            if(situation[i][j][2] === 'k')
+            if(situation[i][j]===str)
                 return false;
         }
     }
