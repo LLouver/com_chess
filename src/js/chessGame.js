@@ -39,7 +39,7 @@ function resetBoard(board){
 
 //选定了一个棋子，标出他能攻击的格子
 function markAttack(situation,board,piece){
-    if(piece.type[1] === "p"){
+    if(piece.type[1] === "p"){//兵
         if(piece.type[0] === "b"){
             board[piece.x - 1][piece.y - 1] = 1;
             board[piece.x - 1][piece.y + 1] = 1;
@@ -49,7 +49,7 @@ function markAttack(situation,board,piece){
             board[piece.x + 1][piece.y + 1] = 1;
         }
     }
-    else if(piece.type[1] === "r"){
+    else if(piece.type[1] === "r"){//车
         for(let i = 1; i <= 8 - piece.x; i++) {
             board[piece.x + i][piece.y] = 1;
             if(situation[piece.x + i][piece.y] !== "  ")
@@ -71,7 +71,7 @@ function markAttack(situation,board,piece){
                 break;
         }
     }
-    else if(piece.type[1] === "n"){
+    else if(piece.type[1] === "n"){//马
         if((piece.x + 1) <= 8 && (piece.y + 2) <= 8)
             board[piece.x + 1][piece.y + 2] = 1;
         if((piece.x + 1) <= 8 && (piece.y - 2) >= 1)
@@ -89,7 +89,7 @@ function markAttack(situation,board,piece){
         if((piece.x - 2) >= 1 && (piece.y - 1) >= 1)
             board[piece.x - 2][piece.y - 1] = 1;
     }
-    else if(piece.type[1] === "b"){
+    else if(piece.type[1] === "b"){//相
         let i = piece.x, j = piece.y;
         while(i <= 8 && j <= 8) {
             i++;
@@ -120,7 +120,7 @@ function markAttack(situation,board,piece){
                 break;
         }
     }
-    else if(piece.type[1] === "q"){
+    else if(piece.type[1] === "q"){//后
         for(let i = 1; i <= 8 - piece.x; i++) {
             board[piece.x + i][piece.y] = 1;
             if(situation[piece.x + i][piece.y] !== "  ")
@@ -172,7 +172,7 @@ function markAttack(situation,board,piece){
                 break;
         }
     }
-    else if(piece.type[1] === "k"){
+    else if(piece.type[1] === "k"){//王
         if((piece.x + 1) <= 8)
             board[piece.x + 1][piece.y] = 1;
         if((piece.x - 1) >= 1)
@@ -195,35 +195,33 @@ function markAttack(situation,board,piece){
 
 //标记出某方棋子可以攻击的所有格子，包括国王攻击
 /*调用markValid*/
-function markAttackAll(situation,board,side){
-    resetBoard(board);
-    if(side === 0){        //黑方
-        for(let i = 1 ; i <= 8 ; ++i) {
-            for (let j = 1; j <= 8; ++j){
-                if(situation[i][j][0] === 'b') {
-                    let piece={type:situation[i][j],x:i,y:j};
-                    markAttack(situation, board, piece);
-                }
+function markAttackAll(situation,side){
+    let color_info = "bw";
+    resetBoard(attackInfo[side]);
+    for(let i = 1 ; i <= 8 ; ++i) {
+        for (let j = 1; j <= 8; ++j){
+            if(situation[i][j][0] === color_info[side]) {
+                let piece={type:situation[i][j],x:i,y:j};
+                markAttack(situation, attackInfo[side], piece);
             }
         }
     }
-    else if(side === 1){   //白方
-        for(let i = 1 ; i <= 8 ; ++i) {
-            for (let j = 1; j <= 8; ++j){
-                if(situation[i][j][0] === 'w'){
-                    let piece={type:situation[i][j],x:i,y:j};
-                    markAttack(situation, board, piece);
-                }
-            }
-        }
-    }
-    else return false;
 }
 
 
-//检查某方是否将军（A将军，B被将军
-/*调用markAttack*/
+//检查某方是否将军（side将军，side^1被将军
+/*调用markAttackAll*/
 function isCheck(situation,side){
+    markAttackAll(situation,side);
+    for(let i = 1 ; i <= 8 ; ++i) {
+        for (let j = 1; j <= 8; ++j) {
+            if(attackInfo[side][i][j] && situation[i][j][2] === 'k')
+                return true;
+            if(situation[i][j][2] === 'k')
+                return false;
+        }
+    }
+    return false;
 }
 
 //在board中标出一个棋子能移动到的其它格子（不能走到不符合正常走法规则的格子，而且不能送将）
