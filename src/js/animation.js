@@ -1,22 +1,23 @@
 //animation.js
 //动画
 "use strict";
+
 function onClicked(x,y){
-    //选定己方棋子
-    console.log("onclicked " + x + y);
+    //不是自己的回合，不执行任何操作
     if(!movable) return;
+    //选定己方棋子
     if((gameSitu[x][y][0]==='w'&&side===1)||(gameSitu[x][y][0]==='b'&&side===0)){
         cancelChoosePiece();
         choosePiece(x,y);
         chosenPiece[0]=x;
         chosenPiece[1]=y;
     }else if(chosenPiece[0] !== 0){
-        //if(moveInfo[side][x][y])
+        if(moveInfo[side][x][y])
         {
             doRequest('/move ' + gameId + ' ' + chosenPiece[0] + ' ' + chosenPiece[1] + ' ' + x + ' ' + y + ' ' + side);
             movable=0;
         }
-        //else
+        else
             cancelChoosePiece();
     }
 }

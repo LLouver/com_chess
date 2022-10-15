@@ -1,6 +1,7 @@
 //piece.js
-
 //对格子的操作
+"use strict";
+
 function showHighlight(x,y){
     let str='cell'+x+y;
     document.getElementById(str).className='cell ' + ((x+y)%2===1?'highWhite':'highBlack');
@@ -35,6 +36,7 @@ function cancelChoosePiece(){
         }
     }
 }
+
 function choosePiece(x,y){
     //console.log('clicked ' + x + y);
     showHighlight(x,y);
@@ -49,6 +51,16 @@ function choosePiece(x,y){
             }
         }
     }*/
+}
+
+function markCheck(side){
+    let str=(side===1?'bk':'wk');
+    for(let i = 1 ; i <= 8 ; ++ i) {
+        for (let j = 1; j <= 8; ++j) {
+            if(gameSitu[i][j] === str)
+                showWarning(i,j);
+        }
+    }
 }
 
 function addPiece(x,y,s){
