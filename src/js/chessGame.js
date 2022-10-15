@@ -99,7 +99,7 @@ function markAttack(situation,board,piece){
     }
     else if(piece.type[1] === "b"){//相
         let i = piece.x, j = piece.y;
-        while(i <= 8 && j <= 8) {
+        while(i < 8 && j < 8) {
             i++;
             j++;
             board[i][j] = 1;
@@ -108,7 +108,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j <= 8) {
+        while(i > 1 && j < 8) {
             i--;
             j++;
             board[i][j] = 1;
@@ -117,7 +117,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i <= 8 && j >= 1) {
+        while(i < 8 && j > 1) {
             i++;
             j--;
             board[i][j] = 1;
@@ -126,7 +126,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j >= 1) {
+        while(i > 1 && j > 1) {
             i--;
             j--;
             board[i][j] = 1;
@@ -157,7 +157,7 @@ function markAttack(situation,board,piece){
         }
 
         let i = piece.x, j = piece.y;
-        while(i <= 8 && j <= 8) {
+        while(i < 8 && j < 8) {
             i++;
             j++;
             board[i][j] = 1;
@@ -166,7 +166,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j <= 8) {
+        while(i > 1 && j < 8) {
             i--;
             j++;
             board[i][j] = 1;
@@ -175,7 +175,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i <= 8 && j >= 1) {
+        while(i < 8 && j > 1) {
             i++;
             j--;
             board[i][j] = 1;
@@ -184,7 +184,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j >= 1) {
+        while(i > 1 && j > 1) {
             i--;
             j--;
             board[i][j] = 1;
@@ -218,8 +218,6 @@ function markAttack(situation,board,piece){
 function markAttackAll(situation,side){
     let color_info = "bw";
     resetBoard(attackInfo[side]);
-    console.log('board' + side);
-    de(attackInfo[side]);
     for(let i = 1 ; i <= 8 ; ++i) {
         for (let j = 1; j <= 8; ++j){
             if(situation[i][j][0] === color_info[side]) {
@@ -249,8 +247,7 @@ function isCheck(situation,side){
 
 //在board中标出一个棋子能移动到的其它格子（不能走到不符合正常走法规则的格子，而且不能送将）
 /*调用markAttack*/
-function markValidMove(situation, board, piece) {
-    console.log(piece);
+function markValidMove(situation,board,piece){
     resetBoard(board);
     if (piece.type[1] === "p") {
         if (piece.type[0] === "b" && piece.x - 1 >= 1) {
@@ -274,7 +271,7 @@ function markValidMove(situation, board, piece) {
         for (let i = 1; i <= 8 - piece.x; i++) {
             board[piece.x + i][piece.y] = 1;
             if (situation[piece.x + i][piece.y] !== "  ") {
-                if (situation[piece.x + i][piece.y][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x + i][piece.y][0] === board[piece.x][piece.y][0])
                     board[piece.x + i][piece.y] = 0;
                 break;
             }
@@ -283,7 +280,7 @@ function markValidMove(situation, board, piece) {
         for (let i = 1; i <= piece.x - 1; i--) {
             board[piece.x - i][piece.y] = 1;
             if (situation[piece.x - i][piece.y] !== "  ") {
-                if (situation[piece.x - i][piece.y][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x - i][piece.y][0] === board[piece.x][piece.y][0])
                     board[piece.x - i][piece.y] = 0;
                 break;
             }
@@ -292,7 +289,7 @@ function markValidMove(situation, board, piece) {
         for (let j = 1; j <= 8 - piece.y; j++) {
             board[piece.x][piece.y + j] = 1;
             if (situation[piece.x][piece.y + j] !== "  ") {
-                if (situation[piece.x][piece.y + j][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x][piece.y + j][0] === board[piece.x][piece.y][0])
                     board[piece.x][piece.y + j] = 0;
                 break;
             }
@@ -301,7 +298,7 @@ function markValidMove(situation, board, piece) {
         for (let j = 1; j <= piece.y - 1; j--) {
             board[piece.x][piece.y - j] = 1;
             if (situation[piece.x][piece.y - j] !== "  ") {
-                if (situation[piece.x][piece.y - j][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x][piece.y - j][0] === board[piece.x][piece.y][0])
                     board[piece.x][piece.y - j] = 0;
                 break;
             }
@@ -335,7 +332,6 @@ function markValidMove(situation, board, piece) {
                 board[piece.x - 2][piece.y - 1] = 1;
     }
     else if (piece.type[1] === "b") {
-        console.log(board);
         let i = piece.x, j = piece.y;
         while (i <= 8 && j <= 8) {
             i++;
@@ -349,9 +345,6 @@ function markValidMove(situation, board, piece) {
             }
 
         }
-
-        i = piece.x;
-        j = piece.y;
         while (i >= 1 && j <= 8) {
             i--;
             j++;
@@ -363,9 +356,6 @@ function markValidMove(situation, board, piece) {
                 break;
             }
         }
-
-        i = piece.x;
-        j = piece.y;
         while (i <= 8 && j >= 1) {
             i++;
             j--;
@@ -377,9 +367,6 @@ function markValidMove(situation, board, piece) {
                 break;
             }
         }
-
-        i = piece.x;
-        j = piece.y;
         while (i >= 1 && j >= 1) {
             i--;
             j--;
@@ -391,13 +378,12 @@ function markValidMove(situation, board, piece) {
                 break;
             }
         }
-        console.log(board);
     }
     else if (piece.type[1] === "q") {
         for (let i = 1; i <= 8 - piece.x; i++) {
             board[piece.x + i][piece.y] = 1;
             if (situation[piece.x + i][piece.y] !== "  ") {
-                if (situation[piece.x + i][piece.y][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x + i][piece.y][0] === board[piece.x][piece.y][0])
                     board[piece.x + i][piece.y] = 0;
                 break;
             }
@@ -406,7 +392,7 @@ function markValidMove(situation, board, piece) {
         for (let i = 1; i <= piece.x - 1; i--) {
             board[piece.x - i][piece.y] = 1;
             if (situation[piece.x - i][piece.y] !== "  ") {
-                if (situation[piece.x - i][piece.y][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x - i][piece.y][0] === board[piece.x][piece.y][0])
                     board[piece.x - i][piece.y] = 0;
                 break;
             }
@@ -415,7 +401,7 @@ function markValidMove(situation, board, piece) {
         for (let j = 1; j <= 8 - piece.y; j++) {
             board[piece.x][piece.y + j] = 1;
             if (situation[piece.x][piece.y + j] !== "  ") {
-                if (situation[piece.x][piece.y + j][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x][piece.y + j][0] === board[piece.x][piece.y][0])
                     board[piece.x][piece.y + j] = 0;
                 break;
             }
@@ -424,7 +410,7 @@ function markValidMove(situation, board, piece) {
         for (let j = 1; j <= piece.y - 1; j--) {
             board[piece.x][piece.y - j] = 1;
             if (situation[piece.x][piece.y - j] !== "  ") {
-                if (situation[piece.x][piece.y - j][0] === situation[piece.x][piece.y][0])
+                if (situation[piece.x][piece.y - j][0] === board[piece.x][piece.y][0])
                     board[piece.x][piece.y - j] = 0;
                 break;
             }
@@ -442,11 +428,7 @@ function markValidMove(situation, board, piece) {
                     board[i][j] = 0;
                 break;
             }
-
         }
-
-        i = piece.x;
-        j = piece.y;
         while (i >= 1 && j <= 8) {
             i--;
             j++;
@@ -458,9 +440,6 @@ function markValidMove(situation, board, piece) {
                 break;
             }
         }
-
-        i = piece.x;
-        j = piece.y;
         while (i <= 8 && j >= 1) {
             i++;
             j--;
@@ -472,9 +451,6 @@ function markValidMove(situation, board, piece) {
                 break;
             }
         }
-
-        i = piece.x;
-        j = piece.y;
         while (i >= 1 && j >= 1) {
             i--;
             j--;
