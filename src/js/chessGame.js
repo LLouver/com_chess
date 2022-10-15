@@ -99,7 +99,7 @@ function markAttack(situation,board,piece){
     }
     else if(piece.type[1] === "b"){//相
         let i = piece.x, j = piece.y;
-        while(i <= 8 && j <= 8) {
+        while(i < 8 && j < 8) {
             i++;
             j++;
             board[i][j] = 1;
@@ -108,7 +108,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j <= 8) {
+        while(i > 1 && j < 8) {
             i--;
             j++;
             board[i][j] = 1;
@@ -117,7 +117,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i <= 8 && j >= 1) {
+        while(i < 8 && j > 1) {
             i++;
             j--;
             board[i][j] = 1;
@@ -126,7 +126,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j >= 1) {
+        while(i > 1 && j > 1) {
             i--;
             j--;
             board[i][j] = 1;
@@ -157,7 +157,7 @@ function markAttack(situation,board,piece){
         }
 
         let i = piece.x, j = piece.y;
-        while(i <= 8 && j <= 8) {
+        while(i < 8 && j < 8) {
             i++;
             j++;
             board[i][j] = 1;
@@ -166,7 +166,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j <= 8) {
+        while(i > 1 && j < 8) {
             i--;
             j++;
             board[i][j] = 1;
@@ -175,7 +175,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i <= 8 && j >= 1) {
+        while(i < 8 && j > 1) {
             i++;
             j--;
             board[i][j] = 1;
@@ -184,7 +184,7 @@ function markAttack(situation,board,piece){
         }
         i = piece.x;
         j = piece.y;
-        while(i >= 1 && j >= 1) {
+        while(i > 1 && j > 1) {
             i--;
             j--;
             board[i][j] = 1;
