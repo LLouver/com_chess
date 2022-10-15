@@ -106,6 +106,8 @@ function markAttack(situation,board,piece){
             if(situation[i][j] !== "  ")
                 break;
         }
+        i = piece.x;
+        j = piece.y;
         while(i >= 1 && j <= 8) {
             i--;
             j++;
@@ -113,6 +115,8 @@ function markAttack(situation,board,piece){
             if(situation[i][j] !== "  ")
                 break;
         }
+        i = piece.x;
+        j = piece.y;
         while(i <= 8 && j >= 1) {
             i++;
             j--;
@@ -120,6 +124,8 @@ function markAttack(situation,board,piece){
             if(situation[i][j] !== "  ")
                 break;
         }
+        i = piece.x;
+        j = piece.y;
         while(i >= 1 && j >= 1) {
             i--;
             j--;
@@ -158,6 +164,8 @@ function markAttack(situation,board,piece){
             if(situation[i][j] !== "  ")
                 break;
         }
+        i = piece.x;
+        j = piece.y;
         while(i >= 1 && j <= 8) {
             i--;
             j++;
@@ -165,6 +173,8 @@ function markAttack(situation,board,piece){
             if(situation[i][j] !== "  ")
                 break;
         }
+        i = piece.x;
+        j = piece.y;
         while(i <= 8 && j >= 1) {
             i++;
             j--;
@@ -172,6 +182,8 @@ function markAttack(situation,board,piece){
             if(situation[i][j] !== "  ")
                 break;
         }
+        i = piece.x;
+        j = piece.y;
         while(i >= 1 && j >= 1) {
             i--;
             j--;
