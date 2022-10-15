@@ -251,17 +251,26 @@ function markValidMove(situation, board, piece) {
     if (piece.type[1] === "p") {
         if (piece.type[0] === "b" && piece.x - 1 >= 1) {
             if(situation[piece.x - 1][piece.y] === "  ")
+            {
+                if(piece.x === 7 && situation[piece.x - 2][piece.y] === "  ")
+                    board[piece.x - 2][piece.y] = !suicide(situation,piece,piece.x - 2,piece.y);
                 board[piece.x - 1][piece.y] = !suicide(situation,piece,piece.x - 1,piece.y);
+            }
             if(piece.y - 1 >= 1)
               if(situation[piece.x - 1][piece.y - 1][0] === 'w')
                 board[piece.x - 1][piece.y - 1] = !suicide(situation,piece,piece.x - 1,piece.y-1);
             if(piece.y + 1 <= 8)
               if(situation[piece.x - 1][piece.y + 1][0] === 'w')
                 board[piece.x - 1][piece.y + 1] = !suicide(situation,piece,piece.x - 1,piece.y+1);
+
         }
         else if (piece.type[0] === "w" && piece.x + 1 <= 8) {
             if(situation[piece.x + 1][piece.y] === "  ")
+            {
+                if(piece.x === 2 && situation[piece.x + 2][piece.y] === "  ")
+                    board[piece.x + 2][piece.y] = !suicide(situation,piece,piece.x + 2,piece.y);
                 board[piece.x + 1][piece.y] = !suicide(situation,piece,piece.x + 1,piece.y);
+            }
             if(piece.y - 1 >= 1)
               if(situation[piece.x + 1][piece.y - 1][0] === 'b')
                 board[piece.x + 1][piece.y - 1] = !suicide(situation,piece,piece.x + 1,piece.y - 1);
