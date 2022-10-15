@@ -61,6 +61,11 @@ function begin(){
     initSituation(gameSitu);
     showSituation(gameSitu);
     countDown(1);
+    for(let i = 1 ; i <= 8 ; ++ i){
+        gameSitu=[];
+        attackInfo=[];
+        moveInfo=[];
+    }
 }
 
 //设置开始标志并重置比赛

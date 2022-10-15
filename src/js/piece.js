@@ -43,14 +43,14 @@ function choosePiece(x,y){
     let c=(gameSitu[x][y][1]==='w'?1:0);
     let piece={type:gameSitu[x][y],x:x,y:y};
     markValidMove(gameSitu,moveInfo[c],piece);
-    /*
+    console.log(moveInfo);
     for(let i = 1 ; i <= 8 ; ++ i){
         for(let j = 1 ; j <= 8 ; ++ j){
             if(moveInfo[c][i][j]){
                 showMovable(i,j,1);
             }
         }
-    }*/
+    }
 }
 
 function markCheck(side){

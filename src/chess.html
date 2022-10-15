@@ -38,11 +38,15 @@
         //表示当前选中的棋子坐标，[0,0]表示没选
 		let chosenPiece=[];
         //表示局时
-        var restTime=[10,10];
+        var restTime=[60,60];
         //表示步时
         var stepTime=30;
 		//计时器
         let counting;
+		//标记过路兵
+        let passant={x:0,y:0};
+        //王车是否移动过
+		let isMoved={bk:0,br1:0,br8:0,wk:0,wr1:0,wr8:0};
 	</script>
 </head>
 

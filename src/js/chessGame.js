@@ -235,7 +235,249 @@ function isCheck(situation,side){
 
 //在board中标出一个棋子能移动到的其它格子（不能走到不符合正常走法规则的格子，而且不能送将）
 /*调用markAttack*/
-function markValidMove(situation,board,piece){}
+function markValidMove(situation,board,piece){
+    resetBoard(board);
+    if (piece.type[1] === "p") {
+        if (piece.type[0] === "b" && piece.x - 1 >= 1) {
+            if(situation[piece.x - 1][piece.y] === "  ")
+                board[piece.x - 1][piece.y] = 1;
+            if(situation[piece.x - 1][piece.y - 1][0] === 'w')
+                board[piece.x - 1][piece.y - 1] = 1;
+            if(situation[piece.x - 1][piece.y + 1][0] === 'w')
+                board[piece.x - 1][piece.y + 1] = 1;
+        }
+        else if (piece.type[0] === "w" && piece.x + 1 <= 8) {
+            if(situation[piece.x + 1][piece.y] === "  ")
+                board[piece.x + 1][piece.y] = 1;
+            if(situation[piece.x + 1][piece.y - 1][0] === 'b')
+                board[piece.x + 1][piece.y - 1] = 1;
+            if(situation[piece.x + 1][piece.y + 1][0] === 'b')
+                board[piece.x + 1][piece.y + 1] = 1;
+        }
+    }
+    else if (piece.type[1] === "r") {
+        for (let i = 1; i <= 8 - piece.x; i++) {
+            board[piece.x + i][piece.y] = 1;
+            if (situation[piece.x + i][piece.y] !== "  ") {
+                if (situation[piece.x + i][piece.y][0] === board[piece.x][piece.y][0])
+                    board[piece.x + i][piece.y] = 0;
+                break;
+            }
+
+        }
+        for (let i = 1; i <= piece.x - 1; i--) {
+            board[piece.x - i][piece.y] = 1;
+            if (situation[piece.x - i][piece.y] !== "  ") {
+                if (situation[piece.x - i][piece.y][0] === board[piece.x][piece.y][0])
+                    board[piece.x - i][piece.y] = 0;
+                break;
+            }
+
+        }
+        for (let j = 1; j <= 8 - piece.y; j++) {
+            board[piece.x][piece.y + j] = 1;
+            if (situation[piece.x][piece.y + j] !== "  ") {
+                if (situation[piece.x][piece.y + j][0] === board[piece.x][piece.y][0])
+                    board[piece.x][piece.y + j] = 0;
+                break;
+            }
+
+        }
+        for (let j = 1; j <= piece.y - 1; j--) {
+            board[piece.x][piece.y - j] = 1;
+            if (situation[piece.x][piece.y - j] !== "  ") {
+                if (situation[piece.x][piece.y - j][0] === board[piece.x][piece.y][0])
+                    board[piece.x][piece.y - j] = 0;
+                break;
+            }
+
+        }
+    }
+    else if (piece.type[1] === "n") {
+        if ((piece.x + 1) <= 8 && (piece.y + 2) <= 8)
+            if (situation[piece.x + 1][piece.y + 2][0] !== situation[piece.x][piece.y][0])
+                board[piece.x + 1][piece.y + 2] = 1;
+        if ((piece.x + 1) <= 8 && (piece.y - 2) >= 1)
+            if (situation[piece.x + 1][piece.y - 2][0] !== situation[piece.x][piece.y][0])
+                board[piece.x + 1][piece.y - 2] = 1;
+        if ((piece.x - 1) >= 1 && (piece.y + 2) <= 8)
+            if (situation[piece.x - 1][piece.y + 2][0] !== situation[piece.x][piece.y][0])
+                board[piece.x - 1][piece.y + 2] = 1;
+        if ((piece.x - 1) >= 1 && (piece.y - 2) >= 1)
+            if (situation[piece.x - 1][piece.y - 2][0] !== situation[piece.x][piece.y][0])
+                board[piece.x - 1][piece.y - 2] = 1;
+        if ((piece.x + 2) <= 8 && (piece.y + 1) <= 8)
+            if (situation[piece.x + 2][piece.y + 1][0] !== situation[piece.x][piece.y][0])
+                board[piece.x + 2][piece.y + 1] = 1;
+        if ((piece.x + 2) <= 8 && (piece.y - 1) >= 1)
+            if (situation[piece.x + 2][piece.y - 1][0] !== situation[piece.x][piece.y][0])
+                board[piece.x + 2][piece.y - 1] = 1;
+        if ((piece.x - 2) >= 1 && (piece.y + 1) <= 8)
+            if (situation[piece.x - 2][piece.y + 1][0] !== situation[piece.x][piece.y][0])
+                board[piece.x - 2][piece.y + 1] = 1;
+        if ((piece.x - 2) >= 1 && (piece.y - 1) >= 1)
+            if (situation[piece.x - 2][piece.y - 1][0] !== situation[piece.x][piece.y][0])
+                board[piece.x - 2][piece.y - 1] = 1;
+    }
+    else if (piece.type[1] === "b") {
+        let i = piece.x, j = piece.y;
+        while (i <= 8 && j <= 8) {
+            i++;
+            j++;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+
+        }
+        while (i >= 1 && j <= 8) {
+            i--;
+            j++;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+        }
+        while (i <= 8 && j >= 1) {
+            i++;
+            j--;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+        }
+        while (i >= 1 && j >= 1) {
+            i--;
+            j--;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+        }
+    }
+    else if (piece.type[1] === "q") {
+        for (let i = 1; i <= 8 - piece.x; i++) {
+            board[piece.x + i][piece.y] = 1;
+            if (situation[piece.x + i][piece.y] !== "  ") {
+                if (situation[piece.x + i][piece.y][0] === board[piece.x][piece.y][0])
+                    board[piece.x + i][piece.y] = 0;
+                break;
+            }
+
+        }
+        for (let i = 1; i <= piece.x - 1; i--) {
+            board[piece.x - i][piece.y] = 1;
+            if (situation[piece.x - i][piece.y] !== "  ") {
+                if (situation[piece.x - i][piece.y][0] === board[piece.x][piece.y][0])
+                    board[piece.x - i][piece.y] = 0;
+                break;
+            }
+
+        }
+        for (let j = 1; j <= 8 - piece.y; j++) {
+            board[piece.x][piece.y + j] = 1;
+            if (situation[piece.x][piece.y + j] !== "  ") {
+                if (situation[piece.x][piece.y + j][0] === board[piece.x][piece.y][0])
+                    board[piece.x][piece.y + j] = 0;
+                break;
+            }
+
+        }
+        for (let j = 1; j <= piece.y - 1; j--) {
+            board[piece.x][piece.y - j] = 1;
+            if (situation[piece.x][piece.y - j] !== "  ") {
+                if (situation[piece.x][piece.y - j][0] === board[piece.x][piece.y][0])
+                    board[piece.x][piece.y - j] = 0;
+                break;
+            }
+
+        }
+
+        let i = piece.x, j = piece.y;
+        while (i <= 8 && j <= 8) {
+            i++;
+            j++;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+        }
+        while (i >= 1 && j <= 8) {
+            i--;
+            j++;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+        }
+        while (i <= 8 && j >= 1) {
+            i++;
+            j--;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+        }
+        while (i >= 1 && j >= 1) {
+            i--;
+            j--;
+            board[i][j] = 1;
+            if (situation[i][j] !== "  ")
+            {
+                if(situation[i][j][0]===piece.type[0])
+                    board[i][j] = 0;
+                break;
+            }
+        }
+    }
+    else if (piece.type[1] === "k") {
+        if ((piece.x + 1) <= 8)
+            if(situation[piece.x + 1][piece.y][0] !== piece.type[0])
+                board[piece.x + 1][piece.y] = 1;
+        if ((piece.x - 1) >= 1)
+            if(situation[piece.x - 1][piece.y][0] !== piece.type[0])
+                board[piece.x - 1][piece.y] = 1;
+        if ((piece.y + 1) <= 8)
+            if(situation[piece.x][piece.y + 1][0] !== piece.type[0])
+                board[piece.x][piece.y + 1] = 1;
+        if ((piece.y - 1) >= 1)
+            if(situation[piece.x][piece.y - 1][0] !== piece.type[0])
+                board[piece.x][piece.y - 1] = 1;
+        if ((piece.x + 1) <= 8 && (piece.y + 1) <= 8)
+            if(situation[piece.x + 1][piece.y + 1][0] !== piece.type[0])
+                board[piece.x + 1][piece.y + 1] = 1;
+        if ((piece.x - 1) >= 1 && (piece.y - 1) >= 1)
+            if(situation[piece.x - 1][piece.y - 1][0] !== piece.type[0])
+                board[piece.x - 1][piece.y - 1] = 1;
+        if ((piece.x - 1) >= 1 && (piece.y + 1) <= 8)
+            if(situation[piece.x - 1][piece.y + 1][0] !== piece.type[0])
+                board[piece.x - 1][piece.y + 1] = 1;
+        if ((piece.x + 1) <= 8 && (piece.y - 1) >= 1)
+            if(situation[piece.x + 1][piece.y - 1][0] !== piece.type[0])
+                board[piece.x + 1][piece.y - 1] = 1;
+    }
+}
 
 //检查某方是否无路可走
 /*调用markAttack*/
