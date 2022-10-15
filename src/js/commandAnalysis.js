@@ -29,7 +29,7 @@ function doReceive(s){
             join(args[1],args[2]);
             break;
         case '/accept'://id name side
-            if(args[1]!==gameId || args[2] === playerName[side])
+            if(args[1]!==gameId)
                 return;
             accept(args[2],args[3]);
             break;

@@ -8,7 +8,7 @@ function resetGame(){
     restTime[0]=60;
     restTime[1]=60;
     ready[0]=ready[1]=0;
-    movable=[0];
+    movable=0;
 }
 
 //显示一个局面,对棋盘上64个div修改
@@ -28,6 +28,7 @@ function showPlayerName(){
     document.getElementById('enemyName').innerHTML=playerName[side^1];
 
 }
+
 function showJoinBoard(swi){
     if(swi){
         document.getElementById('inputBlock').hidden=false;
@@ -38,6 +39,7 @@ function showJoinBoard(swi){
         document.getElementById('inputBlock').style.display='';
     }
 }
+
 function showSideChoose(swi){
     if(swi){
         document.getElementById('chooseBlock').hidden=false;
@@ -47,6 +49,18 @@ function showSideChoose(swi){
         document.getElementById('chooseBlock').style.display='';
     }
 }
+
+function showReadyButton(swi){
+    if(swi) {
+        document.getElementById('readyButton').hidden = false;
+        document.getElementById('settingButton').hidden = false;
+    }
+    else{
+        document.getElementById('readyButton').hidden = true;
+        document.getElementById('settingButton').hidden = true;
+    }
+}
+
 function showMainBoard(){
     document.getElementById("board").innerHTML='';
     //console.log("side " + side);
@@ -88,20 +102,10 @@ function showMainBoard(){
     }
 }
 //显示/隐藏时间设置框，隐藏时发送/setTime
-function showTimeSetting(swi){}
+function showTimeSetting(swi){
+    if(swi)
+        document.getElementById('timeSettingBlock').hidden = false;
+    else
+        document.getElementById('timeSettingBlock').hidden = true;
+}
 
-//指定某方获得胜利和获胜理由
-function end(side,reason){}
-
-//轮到自己回合，开始倒计时
-function myTurn(){}
-
-//玩家进行了一步合法行棋，执行相应的动画，画动画，同时加上相应步时
-function myMove(lx,ly,cx,cy){}
-
-//无论是鼠标还是键盘操作都要发送move和turn指令
-//鼠标点击了一个位置，表示选中一个棋子或移动到一个位置，
-function clickEvent(lx,ly,cx,cy){}
-
-//将一个元素拖到了一个位置
-function dragEvent(lx,ly,cx,cy){}

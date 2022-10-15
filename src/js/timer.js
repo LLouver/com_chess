@@ -3,6 +3,8 @@
 "use strict";
 
 function countDown(playerSide){
+    document.getElementById('meCounting').innerHTML=(Math.floor(restTime[side]/60)) + ' : ' + (restTime[side]%60);
+    document.getElementById('enemyCounting').innerHTML=(Math.floor(restTime[side^1]/60)) + ' : ' + (restTime[side^1]%60);
     counting = setInterval(function (){
         restTime[playerSide] --;
         let str = (playerSide===side?'meCounting':'enemyCounting');

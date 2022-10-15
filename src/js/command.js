@@ -25,10 +25,13 @@ function accept(name,str_sideChose){
         side=parseInt(str_sideChose);
         playerName[side^1]=name;
     }
+    showReadyButton(1);
     showJoinBoard(0);
     document.getElementById('mainBoard').hidden=false;
     showPlayerName();
-    //showMainBoard();
+    showMainBoard();
+    initSituation(gameSitu);
+    showSituation(gameSitu);
 }
 
 //准备/取消准备，发送/ready
@@ -45,6 +48,7 @@ function setTime(str_a,str_b){
     restTime[0]=parseInt(str_a);
     restTime[1]=parseInt(str_a);
     stepTime=parseInt(str_b);
+    console.log('setTime ' + str_a + str_b);
 }
 
 //设置开始标志并且激活白方走棋
@@ -52,18 +56,15 @@ function begin(){
     console.log("began!")
     document.getElementById('meCounting').innerHTML=(Math.floor(restTime[side]/60)) + ' : ' + (restTime[side]%60);
     document.getElementById('enemyCounting').innerHTML=(Math.floor(restTime[side^1]/60)) + ' : ' + (restTime[side^1]%60);
+    showReadyButton(0);
+    showTimeSetting(0);
     started=1;
     ready[0]=ready[1]=0;
     if(side===1){
         movable=1;
     }
-    showMainBoard();
-    initSituation(gameSitu);
-    showSituation(gameSitu);
-    console.log(gameSitu);
     countDown(1);
     for(let i = 1 ; i <= 8 ; ++ i){
-        attackInfo[i]=[];
         moveInfo[0][i]=[];
         moveInfo[1][i]=[];
         attackInfo[0][i]=[];
@@ -89,7 +90,8 @@ function move(lx,ly,cx,cy,playerSide){
     //console.log('player' + playerSide + ' made ' + lx + ly + cx + cy);
     drawAnimation(lx,ly,cx,cy);
     clearInterval(counting);
-    countDown(playerSide);
+    restTime[playerSide] += stepTime;
+    countDown(playerSide^1);
     if(side === playerSide){
         return ;
     }
@@ -133,3 +135,7 @@ function clickChose(side){
     host(i,n,side);
 }
 
+function clickSetTime(){
+    doRequest('/setTime ' + gameId + ' ' + document.getElementById('globalTimeInput').value + ' ' + document.getElementById('stepTimeInput').value);
+    showTimeSetting(0);
+}

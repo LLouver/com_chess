@@ -39,6 +39,7 @@ function resetBoard(board){
 
 //选定了一个棋子，标出他能攻击的格子
 function markAttack(situation,board,piece){
+    //de(board);
     if(piece.type[1] === "p"){//兵
         if(piece.type[0] === "b"){
             if((piece.x - 1) >= 1) {

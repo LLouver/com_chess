@@ -7,6 +7,7 @@
 }
 /*棋盘*/
 #board{
+    box-sizing: border-box;
     background-color: green;
     width: 70%;
     height: 70%;
@@ -66,6 +67,15 @@
     height: 50%;
     width:50%;
 }
+#timeSettingBlock{
+    background-color: #312e2b;
+    color:whitesmoke;
+    position: absolute;
+    left: 20%;
+    top:20%;
+    height: 50%;
+    width:30%;
+}
 
 input{
     width: 70%;
@@ -86,12 +96,25 @@ input{
 }
 
 #readyButton{
+    margin: 5px;
     color: #f7f72b;
     background-color:dimgray ;
     border-radius: 8px;
     height: 20px;
     width: 80px;
     padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#settingButton{
+    margin: 5px;
+    color: #f7f72b;
+    background-color:dimgray ;
+    border-radius: 8px;
+    height: 20px;
+    width: 80px;
+    padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
 }

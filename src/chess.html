@@ -55,27 +55,27 @@
 
 <div id="mainBoard" hidden>
 	<div id="enemyPlayer" class="player">
-		<div id="enemyName">
+		<span id="enemyName">
 			Enemy
-		</div>
-		<div id="enemyCounting">
+		</span>
+		<span id="enemyCounting">
 			ahaha
-		</div>
+		</span>
 	</div>
 	<div id="board"></div>
 	<div id="selfPlayer" class="player">
-		<div id="meName">
+		<span  id="meName">
 			Me
-		</div>
-		<div id="meCounting">
+		</span >
+		<span  id="meCounting">
 			ahaha
-		</div>
+		</span >
 	</div>
 </div>
 
-<div id="readyButton" onclick="clickReady()">准备</div>
+<div id="readyButton" onclick="clickReady() " hidden>准备</div>
 
-<div id="settingButton">设置时间</div>
+<div id="settingButton" onclick="showTimeSetting(1)" hidden>设置时间</div>
 
 <div id="inputBlock" hidden = "hidden">
 	<div style="margin: auto">加入或主持一场比赛</div>
@@ -89,6 +89,22 @@
 	<div style="margin: auto; width: 50%; height: 40%; display: flex ; flex-direction: row; justify-content: space-around">
 		<div id="hostButton" class="button" onclick="clickJoin()" style="display: flex ; flex-direction: row; justify-content: space-around">加入！</div>
 		<div id="joinButton" class="button" onclick="clickHost()" style="display: flex ; flex-direction: row; justify-content: space-around">主持！</div>
+	</div>
+
+</div>
+
+<div id="timeSettingBlock" hidden = "hidden">
+	<div style="margin: auto">时间设置</div>
+	<div style="margin: auto">
+		局 时 <input id="globalTimeInput" > s
+	</div>
+	<div style="margin: auto">
+		步 时 <input id="stepTimeInput"> s
+	</div>
+
+	<div style="margin: auto; width: 50%; height: 40%; display: flex ; flex-direction: row; justify-content: space-around">
+		<div id="OKButton" class="button" onclick="clickSetTime()" style="display: flex ; flex-direction: row; justify-content: space-around">保存</div>
+		<div id="cancelButton" class="button" onclick="showTimeSetting(0)" style="display: flex ; flex-direction: row; justify-content: space-around">取消</div>
 	</div>
 
 </div>

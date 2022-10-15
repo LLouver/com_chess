@@ -19,11 +19,10 @@ function showNormal(x,y){
 
 function showMovable(x,y,swi){
     //...
-    let str = 'cell' + x + y;
     if(swi) {
-        document.getElementById(str).className = 'cell chosen ' + ((x + y) % 2 === 1 ? "white" : "black");
+        showHighlight(x,y);
     }else{
-        document.getElementById(str).className = 'cell ' + ((x + y) % 2 === 1 ? "white" : "black");
+        showNormal(x,y);
     }
 }
 
