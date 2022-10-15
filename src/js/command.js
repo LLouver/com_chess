@@ -60,11 +60,14 @@ function begin(){
     showMainBoard();
     initSituation(gameSitu);
     showSituation(gameSitu);
+    console.log(gameSitu);
     countDown(1);
     for(let i = 1 ; i <= 8 ; ++ i){
-        gameSitu=[];
-        attackInfo=[];
-        moveInfo=[];
+        attackInfo[i]=[];
+        moveInfo[0][i]=[];
+        moveInfo[1][i]=[];
+        attackInfo[0][i]=[];
+        attackInfo[1][i]=[];
     }
 }
 
@@ -83,6 +86,7 @@ function end(type,info){
 * 唯一一个直接传入五个number的接受指令函数
 * */
 function move(lx,ly,cx,cy,playerSide){
+    //console.log('player' + playerSide + ' made ' + lx + ly + cx + cy);
     drawAnimation(lx,ly,cx,cy);
     clearInterval(counting);
     countDown(playerSide);
@@ -93,7 +97,7 @@ function move(lx,ly,cx,cy,playerSide){
     if(isEven(gameSitu,side)){
         doRequest('/end ' + gameId + ' e');
     }
-    else if(isCheck(side^1)){
+    else if(isCheck(gameSitu,side^1)){
         markCheck(side^1);
         if(isCheckmate())
             doRequest('/end ' + gameId + ' ' + side);

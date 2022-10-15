@@ -21,7 +21,7 @@ function showMovable(x,y,swi){
     //...
     let str = 'cell' + x + y;
     if(swi) {
-        document.getElementById(str).className = 'cell chosen' + ((x + y) % 2 === 1 ? "white" : "black");
+        document.getElementById(str).className = 'cell chosen ' + ((x + y) % 2 === 1 ? "white" : "black");
     }else{
         document.getElementById(str).className = 'cell ' + ((x + y) % 2 === 1 ? "white" : "black");
     }
@@ -40,10 +40,10 @@ function cancelChoosePiece(){
 function choosePiece(x,y){
     //console.log('clicked ' + x + y);
     showHighlight(x,y);
-    let c=(gameSitu[x][y][1]==='w'?1:0);
+    let c=(gameSitu[x][y][0]==='w'?1:0);
     let piece={type:gameSitu[x][y],x:x,y:y};
     markValidMove(gameSitu,moveInfo[c],piece);
-    console.log(moveInfo);
+    console.log(moveInfo[c]);
     for(let i = 1 ; i <= 8 ; ++ i){
         for(let j = 1 ; j <= 8 ; ++ j){
             if(moveInfo[c][i][j]){

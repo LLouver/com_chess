@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" onclick="console.log('haha');">
+<html lang="en" >
 <head>
 	<meta charset="UTF-8">
 	<title>Chess</title>
@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="js/chessGame.js"></script>
 	<script type="text/javascript" src="js/animation.js"></script>
 	<script type="text/javascript" src="js/timer.js"></script>
+	<script type="text/javascript" src="js/debug.js"></script>
 	<link type="text/css" href="css/main.css" rel="stylesheet">
 	<link type="text/css" href="css/piece.css" rel="stylesheet">
 	<script>
@@ -38,7 +39,7 @@
         //表示当前选中的棋子坐标，[0,0]表示没选
 		let chosenPiece=[];
         //表示局时
-        var restTime=[60,60];
+        var restTime=[600,600];
         //表示步时
         var stepTime=30;
 		//计时器
