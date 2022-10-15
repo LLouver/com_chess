@@ -1,6 +1,16 @@
 //main.js
 //html操作，调用内部操作，同时修改html元素
 "use strict";
+
+function resetGame(){
+    side=side^1;
+    clearInterval(counting);
+    restTime[0]=60;
+    restTime[1]=60;
+    ready[0]=ready[1]=0;
+    movable=[0];
+}
+
 //显示一个局面,对棋盘上64个div修改
 function showSituation(situation){
     for (let i = 1; i <= 8; ++i) {
@@ -14,8 +24,8 @@ function showSituation(situation){
 
 //显示/隐藏host join框
 function showPlayerName(){
-    document.getElementById('selfPlayer').innerHTML=playerName[side];
-    document.getElementById('enemyPlayer').innerHTML=playerName[side^1];
+    document.getElementById('meName').innerHTML=playerName[side];
+    document.getElementById('enemyName').innerHTML=playerName[side^1];
 
 }
 function showJoinBoard(swi){

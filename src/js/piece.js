@@ -1,6 +1,7 @@
 //piece.js
-
 //对格子的操作
+"use strict";
+
 function showHighlight(x,y){
     let str='cell'+x+y;
     document.getElementById(str).className='cell ' + ((x+y)%2===1?'highWhite':'highBlack');
@@ -22,7 +23,7 @@ function showMovable(x,y,swi){
     if(swi) {
         document.getElementById(str).className = 'cell chosen' + ((x + y) % 2 === 1 ? "white" : "black");
     }else{
-        document.getElementById(str).className = 'cell' + ((x + y) % 2 === 1 ? "white" : "black");
+        document.getElementById(str).className = 'cell ' + ((x + y) % 2 === 1 ? "white" : "black");
     }
 }
 
@@ -35,17 +36,29 @@ function cancelChoosePiece(){
         }
     }
 }
+
 function choosePiece(x,y){
-    console.log('clicked ' + x + y);
+    //console.log('clicked ' + x + y);
     showHighlight(x,y);
     let c=(gameSitu[x][y][1]==='w'?1:0);
     let piece={type:gameSitu[x][y],x:x,y:y};
     markValidMove(gameSitu,moveInfo[c],piece);
+    /*
     for(let i = 1 ; i <= 8 ; ++ i){
         for(let j = 1 ; j <= 8 ; ++ j){
             if(moveInfo[c][i][j]){
                 showMovable(i,j,1);
             }
+        }
+    }*/
+}
+
+function markCheck(side){
+    let str=(side===1?'bk':'wk');
+    for(let i = 1 ; i <= 8 ; ++ i) {
+        for (let j = 1; j <= 8; ++j) {
+            if(gameSitu[i][j] === str)
+                showWarning(i,j);
         }
     }
 }
@@ -57,6 +70,7 @@ function addPiece(x,y,s){
 
 function delPiece(x,y){
     let str='cell'+x+y;
+    console.log(str);
     document.getElementById(str).innerHTML=x+' '+y;
 }
 

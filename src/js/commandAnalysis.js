@@ -46,7 +46,12 @@ function doReceive(s){
         case '/end'://id info
             if(args[1]!==gameId)
                 return;
-            end(args[2]);
+            end(args[2],args[3]);
+            break;
+        case '/move'://id lx ly cx xy side
+            if(args[1]!==gameId)
+                return;
+            move(parseInt(args[2]),parseInt(args[3]),parseInt(args[4]),parseInt(args[5]),parseInt(args[6]));
             break;
     }
 }

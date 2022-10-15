@@ -2,16 +2,15 @@
 //收到各指令对应函数
 "use strict";
 //设置游戏id
-function host(id,name,sideChose){
+function host(id,name,str_sideChose){
     gameId=id;
-    side=parseInt(sideChose);
+    side=parseInt(str_sideChose);
     playerName[side]=name;
     isHost=1;
-    document.getElementById('selfPlayer').innerHTML=name;
+    //document.getElementById('selfPlayer').innerHTML=name;
 }
 
 function join(id,name){
-    console.log("someone joined!");
     if(isHost){
         doRequest("/accept " + gameId + ' ' + playerName[side] + ' ' + (side^1));
         playerName[side^1]=name;
@@ -21,37 +20,38 @@ function join(id,name){
     showPlayerName();
 }
 
-function accept(name,sideChose){
-    console.log(name+sideChose);
+function accept(name,str_sideChose){
     if(!isHost){
-        side=parseInt(sideChose);
+        side=parseInt(str_sideChose);
         playerName[side^1]=name;
-        console.log("play " + side);
     }
     showJoinBoard(0);
     document.getElementById('mainBoard').hidden=false;
-    console.log(playerName);
     showPlayerName();
     //showMainBoard();
 }
 
 //准备/取消准备，发送/ready
 //如果双方都准备，游戏开始标记设为true并发送/begin
-function setReady(s,swi){
-    ready[s]=swi;
+function setReady(s,str_swi){
+    ready[s]=parseInt(str_swi);
     if(ready[0] && ready[1]){
         begin();
     }
 }
 
 //设置时间
-function setTime(a,b){
-
+function setTime(str_a,str_b){
+    restTime[0]=parseInt(str_a);
+    restTime[1]=parseInt(str_a);
+    stepTime=parseInt(str_b);
 }
 
 //设置开始标志并且激活白方走棋
 function begin(){
     console.log("began!")
+    document.getElementById('meCounting').innerHTML=(Math.floor(restTime[side]/60)) + ' : ' + (restTime[side]%60);
+    document.getElementById('enemyCounting').innerHTML=(Math.floor(restTime[side^1]/60)) + ' : ' + (restTime[side^1]%60);
     started=1;
     ready[0]=ready[1]=0;
     if(side===1){
@@ -59,32 +59,44 @@ function begin(){
     }
     showMainBoard();
     initSituation(gameSitu);
-    console.log(gameSitu);
     showSituation(gameSitu);
+    countDown(1);
 }
 
 //设置开始标志并重置比赛
-function end(info){
-    started=0;
-    side=side^1;//交换黑白方
+function end(type,info){
+    if(type==='e')
+        alert("平局");
+    else if(parseInt(type)===side)
+        alert("你赢得了比赛！");
+    else
+        alert("你输掉了比赛！");
+    resetGame();
 }
 
-//收到移动指令（对方），画出动画，判定胜负，如果继续则将走棋标记设为true,执行自己回合的函数
-function move(lx,ly,cx,cy){
+/*收到移动指令（对方），画出动画，判定胜负，如果继续则将走棋标记设为true,执行自己回合的函数
+* 唯一一个直接传入五个number的接受指令函数
+* */
+function move(lx,ly,cx,cy,playerSide){
     drawAnimation(lx,ly,cx,cy);
-    movable=1;
-    if(isEven()){
-
+    clearInterval(counting);
+    countDown(playerSide);
+    if(side === playerSide){
+        return ;
     }
-    else if(isCheck()){
-        if(isCheckmate()){
-
-        }else{
-
-        }
+    movable=1;
+    if(isEven(gameSitu,side)){
+        doRequest('/end ' + gameId + ' e');
+    }
+    else if(isCheck(side^1)){
+        markCheck(side^1);
+        if(isCheckmate())
+            doRequest('/end ' + gameId + ' ' + side);
     }
 }
 
+
+//按下各个按钮需要执行的事件
 function clickReady(){
     doRequest('/ready ' + gameId + ' ' + side + ' ' + (ready[side]^1));//发送请求
     document.getElementById('readyButton').innerHTML=(ready[side]?"准备":"取消准备");
