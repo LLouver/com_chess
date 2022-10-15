@@ -246,6 +246,7 @@ function isCheck(situation,side){
     return false;
 }
 
+
 function suicide(situation,piece,x,y,)
 {
     let situation1=[];
