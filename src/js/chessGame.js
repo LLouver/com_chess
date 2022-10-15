@@ -64,7 +64,7 @@ function markAttack(situation,board,piece){
             if(situation[piece.x + i][piece.y] !== "  ")
                 break;
         }
-        for(let i = 1; i <= piece.x - 1; i--) {
+        for(let i = 1; i <= piece.x - 1; i++) {
             board[piece.x - i][piece.y] = 1;
             if(situation[piece.x - i][piece.y] !== "  ")
                 break;
@@ -74,7 +74,7 @@ function markAttack(situation,board,piece){
             if(situation[piece.x][piece.y + j] !== "  ")
                 break;
         }
-        for(let j = 1; j <= piece.y - 1; j--) {
+        for(let j = 1; j <= piece.y - 1; j++) {
             board[piece.x][piece.y - j] = 1;
             if(situation[piece.x][piece.y - j] !== "  ")
                 break;
@@ -141,7 +141,7 @@ function markAttack(situation,board,piece){
             if(situation[piece.x + i][piece.y] !== "  ")
                 break;
         }
-        for(let i = 1; i <= piece.x - 1; i--) {
+        for(let i = 1; i <= piece.x - 1; i++) {
             board[piece.x - i][piece.y] = 1;
             if(situation[piece.x - i][piece.y] !== "  ")
                 break;
@@ -151,7 +151,7 @@ function markAttack(situation,board,piece){
             if(situation[piece.x][piece.y + j] !== "  ")
                 break;
         }
-        for(let j = 1; j <= piece.y - 1; j--) {
+        for(let j = 1; j <= piece.y - 1; j++) {
             board[piece.x][piece.y - j] = 1;
             if(situation[piece.x][piece.y - j] !== "  ")
                 break;
