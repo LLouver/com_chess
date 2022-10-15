@@ -247,7 +247,7 @@ function isCheck(situation,side){
 }
 
 
-function suicide(situation,piece,x,y,)
+function suicide(situation,piece,x,y)
 {
     let situation1=[];
     let i=1,j=1;
@@ -277,6 +277,10 @@ function markValidMove(situation,board,piece){
     resetBoard(board);
     if (piece.type[1] === "p") {
         if (piece.type[0] === "b" && piece.x - 1 >= 1) {
+            if(piece.x===passant.x) {
+                if(piece.y===passant.y + 1||piece.y===passant.y - 1)
+                    board[piece.x - 1][passant.y] = 1 ;
+            }
             if(situation[piece.x - 1][piece.y] === "  ")
             {
                 if(piece.x === 7 && situation[piece.x - 2][piece.y] === "  ")
@@ -292,6 +296,10 @@ function markValidMove(situation,board,piece){
 
         }
         else if (piece.type[0] === "w" && piece.x + 1 <= 8) {
+            if(piece.x===passant.x) {
+                if(piece.y===passant.y + 1||piece.y===passant.y - 1)
+                    board[piece.x + 1][passant.y] = 1 ;
+            }
             if(situation[piece.x + 1][piece.y] === "  ")
             {
                 if(piece.x === 2 && situation[piece.x + 2][piece.y] === "  ")
@@ -307,7 +315,7 @@ function markValidMove(situation,board,piece){
         }
     }
     else if (piece.type[1] === "r") {
-        for (let i = 1; i <= 8 - piece.x; i++) {
+        for (let i = 1; i + piece.x<= 8 ; i++) {
             board[piece.x + i][piece.y] = !suicide(situation,piece,piece.x + i,piece.y);
             if (situation[piece.x + i][piece.y] !== "  ") {
                 if (situation[piece.x + i][piece.y][0] === situation[piece.x][piece.y][0])
@@ -316,7 +324,7 @@ function markValidMove(situation,board,piece){
             }
 
         }
-        for (let i = 1; i <= piece.x - 1; i--) {
+        for (let i = 1; i <= piece.x - 1; i++) {
             board[piece.x - i][piece.y] = !suicide(situation,piece,piece.x - i,piece.y);
             if (situation[piece.x - i][piece.y] !== "  ") {
                 if (situation[piece.x - i][piece.y][0] === situation[piece.x][piece.y][0])
@@ -334,7 +342,7 @@ function markValidMove(situation,board,piece){
             }
 
         }
-        for (let j = 1; j <= piece.y - 1; j--) {
+        for (let j = 1; j <= piece.y - 1; j++) {
             board[piece.x][piece.y - j] = !suicide(situation,piece,piece.x ,piece.y - j);
             if (situation[piece.x][piece.y - j] !== "  ") {
                 if (situation[piece.x][piece.y - j][0] === situation[piece.x][piece.y][0])
@@ -522,6 +530,37 @@ function markValidMove(situation,board,piece){
         }
     }
     else if (piece.type[1] === "k") {
+        if(piece.type[0] === 'w') {
+            if(isMoved.wk===0) {
+                if(isMoved.wr1===0){
+                    if(situation[1][4] === "  " && situation[1][3] === "  ")
+                        if(!isCheck(situation, 0) && !suicide(situation,piece,1,4) && !suicide(situation,piece,1,3))
+                            board[1][3] = 1;
+                }
+                else if(isMoved.wr8===0){
+                    if(situation[1][6] === "  " && situation[1][7] === "  ")
+                        if(!isCheck(situation, 0) && !suicide(situation,piece,1,6) && !suicide(situation,piece,1,7))
+                            board[1][7] = 1;
+                }
+            }
+        }
+        else{
+            if(isMoved.bk === 0) {
+                if(isMoved.br1 === 0){
+                    if(situation[8][4] === "  " && situation[8][3] === "  ")
+                        if(!isCheck(situation, 1) && !suicide(situation,piece,1,4) && !suicide(situation,piece,1,3))
+                            board[8][3] = 1;
+                }
+                else if(isMoved.br8 === 0){
+                    if(situation[1][6] === "  " && situation[1][7] === "  ")
+                        if(!isCheck(situation, 1) && !suicide(situation,piece,1,6) && !suicide(situation,piece,1,7))
+                            board[8][7] = 1;
+                }
+            }
+        }
+
+
+
         if ((piece.x + 1) <= 8)
             if(situation[piece.x + 1][piece.y][0] !== piece.type[0])
                board[piece.x + 1][piece.y] = !suicide(situation,piece,piece.x + 1,piece.y);
