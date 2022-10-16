@@ -595,7 +595,7 @@ function isEven(situation,board,side){
         let mark=0;
         for(let i=1;i<=8;i++) {
             for (let j = 1; j <= 8; j++) {
-                if (situation[i][j][0] === 'w') {
+                if (situation[i][j][0] === 'b') {
                     let piece = {type: situation[i][j], x: i, y: j};
                     markValidMove(situation,board,piece);
                     for(let k=1;k<=8;k++) {
@@ -614,7 +614,7 @@ function isEven(situation,board,side){
         let mark=0;
         for(let i=1;i<=8;i++) {
             for (let j = 1; j <= 8; j++) {
-                if (situation[i][j][0] === 'b') {
+                if (situation[i][j][0] === 'w') {
                     let piece = {type: situation[i][j], x: i, y: j};
                     markValidMove(situation,board,piece);
                     for(let k=1;k<=8;k++){
@@ -634,11 +634,14 @@ function isEven(situation,board,side){
 //（已知某方将军）检查某方是否将对方将杀（检查B能否应将
 /*调用isCheck*/
 function isCheckmate(situation,board,side){
-    if(side===0) {
-        return !!(isEven(situation, board, 0) && isCheck(situation, 1));
+    console.log('checkmating' + side);
+    console.log('isEven' + isEven(situation, board, 0));
+    console.log('isCheck' + isCheck(situation, 1));
+    if(side===1) {
+        return (isEven(situation, board, 0) && isCheck(situation, 1));
     }
-    else if(side===1) {
-        return !!(isEven(situation, board, 1) && isCheck(situation, 0));
+    else if(side===0) {
+        return (isEven(situation, board, 1) && isCheck(situation, 0));
     }
 }
 

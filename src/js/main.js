@@ -109,3 +109,9 @@ function showTimeSetting(swi){
         document.getElementById('timeSettingBlock').hidden = true;
 }
 
+function showUpgradeBoard(swi){
+    if(swi)
+        document.getElementById('upgradeBlock').hidden=false;
+    else
+        document.getElementById('upgradeBlock').hidden=true;
+}

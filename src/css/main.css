@@ -77,6 +77,16 @@
     width:30%;
 }
 
+#upgradeBlock{
+    background-color: #312e2b;
+    color:whitesmoke;
+    position: absolute;
+    left: 20%;
+    top:20%;
+    height: 50%;
+    width:30%;
+}
+
 input{
     width: 70%;
     height: 30px;

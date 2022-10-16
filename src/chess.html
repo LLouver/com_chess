@@ -38,6 +38,8 @@
         let side=1;
         //表示当前选中的棋子坐标，[0,0]表示没选
 		let chosenPiece=[];
+        //表示决定去哪
+		let chosenToGo=[];
         //表示局时
         var restTime=[600,600];
         //表示步时
@@ -113,6 +115,15 @@
 	<div style=" height:20%; display: flex;margin-top:30%; flex-direction: row; justify-content: space-around">
 		<div id="chooseButton0" class="button" onclick="clickChose(1)" style="display: flex ; flex-direction: row; justify-content: space-around">执白</div>
 		<div id="chooseButton1" class="button" onclick="clickChose(0)" style="display: flex ; flex-direction: row; justify-content: space-around">执黑</div>
+	</div>
+</div>
+
+<div id="upgradeBlock" hidden>
+	<div style="margin: auto; width: 50%; height: 40%; display: flex ; flex-direction: row; justify-content: space-around">
+		<div id="queenButton" class="button" onclick="clickUpgrade('q')" style="display: flex ; flex-direction: row; justify-content: space-around">后</div>
+		<div id="rookButton"  class="button" onclick="clickUpgrade('r')" style="display: flex ; flex-direction: row; justify-content: space-around">车</div>
+		<div id="bishopButton" class="button" onclick="clickUpgrade('b')" style="display: flex ; flex-direction: row; justify-content: space-around">象</div>
+		<div id="knightButton" class="button" onclick="clickUpgrade('n')" style="display: flex ; flex-direction: row; justify-content: space-around">马</div>
 	</div>
 </div>
 

@@ -88,6 +88,7 @@ function end(type,info){
 * */
 function move(lx,ly,cx,cy,playerSide){
     //console.log('player' + playerSide + ' made ' + lx + ly + cx + cy);
+    cancelChoosePiece();
     let p=gameSitu[lx][ly];
     if(p === 'bk') isMoved.bk=true;
     if(p === 'br' && lx === 1 && ly === 1) isMoved.br1=true;
@@ -123,14 +124,23 @@ function move(lx,ly,cx,cy,playerSide){
         return ;
     }
     movable=1;
-    if(isEven(gameSitu,side)){
+    if(isCheck(gameSitu,side^1)){
+        markCheck(side^1);
+        console.log('now checkmating: ' + isCheckmate(gameSitu,moveInfo[side],side^1));
+        if(isCheckmate(gameSitu,moveInfo[side],side^1))
+            doRequest('/end ' + gameId + ' ' + (side^1));
+    }
+    else if(isEven(gameSitu,moveInfo[side],side)){
         doRequest('/end ' + gameId + ' e');
     }
-    else if(isCheck(gameSitu,side^1)){
-        markCheck(side^1);
-        if(isCheckmate())
-            doRequest('/end ' + gameId + ' ' + side);
-    }
+}
+
+function change(str_x,str_y,type){
+    console.log(str_x + ' ' + str_y + ' ' + type);
+    let x = parseInt(str_x),y=parseInt(str_y);
+    gameSitu[x][y]=gameSitu[x][y][0] + type;
+    delPiece(x,y);
+    addPiece(x,y);
 }
 
 //按下各个按钮需要执行的事件
@@ -164,4 +174,11 @@ function clickChose(side){
 function clickSetTime(){
     doRequest('/setTime ' + gameId + ' ' + document.getElementById('globalTimeInput').value + ' ' + document.getElementById('stepTimeInput').value);
     showTimeSetting(0);
+}
+
+function clickUpgrade(s){
+    console.log('now chosen ' + chosenPiece[0] + ' ' + chosenPiece[1]);
+    doRequest('/change ' + gameId + ' ' + chosenPiece[0] + ' ' + chosenPiece[1] + ' ' + s);
+    doRequest('/move ' + gameId + ' ' + chosenPiece[0] + ' ' + chosenPiece[1] + ' ' + chosenToGo[0] + ' ' + chosenToGo[1] + ' ' + side);
+    showUpgradeBoard(0);
 }
