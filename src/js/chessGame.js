@@ -280,7 +280,16 @@ function markValidMove(situation,board,piece){
         if (piece.type[0] === "b" && piece.x - 1 >= 1) {
             if(piece.x===passant.x) {
                 if(piece.y===passant.y + 1||piece.y===passant.y - 1)
-                    board[piece.x - 1][passant.y] = 1 ;
+                {
+                    let temp = [];
+                    temp[0]=situation[passant.y][passant.y][0];
+                    temp[1]=situation[passant.y][passant.y][1];
+                    situation[passant.y][passant.y] = "  ";
+                    board[piece.x - 1][passant.y] = !suicide(situation,piece,piece.x - 1,piece.y) ;
+                    situation[passant.y][passant.y][0] = temp[0];
+                    situation[passant.y][passant.y][1] = temp[1];
+                }
+
             }
             if(situation[piece.x - 1][piece.y] === "  ")
             {
@@ -290,10 +299,10 @@ function markValidMove(situation,board,piece){
             }
             if(piece.y - 1 >= 1)
               if(situation[piece.x - 1][piece.y - 1][0] === 'w')
-                board[piece.x - 1][piece.y - 1] = !suicide(situation,piece,piece.x - 1,piece.y-1);
+                board[piece.x - 1][piece.y - 1] = !suicide(situation,piece,piece.x - 1,piece.y - 1);
             if(piece.y + 1 <= 8)
               if(situation[piece.x - 1][piece.y + 1][0] === 'w')
-                board[piece.x - 1][piece.y + 1] = !suicide(situation,piece,piece.x - 1,piece.y+1);
+                board[piece.x - 1][piece.y + 1] = !suicide(situation,piece,piece.x - 1,piece.y + 1);
 
         }
         else if (piece.type[0] === "w" && piece.x + 1 <= 8) {
