@@ -39,16 +39,16 @@ Chat.initialize = function() {
          Chat.connect('wss://' + window.location.host + '/examples/websocket/chat');
      }*/
 
-    if (window.location.protocol === 'http:') {
+    /*if (window.location.protocol === 'http:') {
         Chat.connect('ws://' + 'localhost:9010'+'/examples/websocket/chat');
     } else {
         Chat.connect('wss://' + 'localhost:9010' + '/examples/websocket/chat');
-    }
-    /*if (window.location.protocol === 'http:') {
+    }*/
+    if (window.location.protocol === 'http:') {
         Chat.connect('ws://' + '192.168.31.41:9010'+'/examples/websocket/chat');
     } else {
         Chat.connect('wss://' + '192.168.31.41:9010' + '/examples/websocket/chat');
-    }*/
+    }
 };
 
 Chat.sendMessage = function() {
