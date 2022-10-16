@@ -278,16 +278,17 @@ function markValidMove(situation,board,piece){
     resetBoard(board);
     if (piece.type[1] === "p") {
         if (piece.type[0] === "b" && piece.x - 1 >= 1) {
-            if(piece.x===passant.x) {
+            if(piece.x===passant.x)
+            {
                 if(piece.y===passant.y + 1||piece.y===passant.y - 1)
                 {
                     let temp = [];
-                    temp[0]=situation[passant.y][passant.y][0];
-                    temp[1]=situation[passant.y][passant.y][1];
-                    situation[passant.y][passant.y] = "  ";
+                    temp[0]=situation[passant.x][passant.y][0];
+                    temp[1]=situation[passant.x][passant.y][1];
+                    situation[passant.x][passant.y] = "  ";
                     board[piece.x - 1][passant.y] = !suicide(situation,piece,piece.x - 1,piece.y) ;
-                    situation[passant.y][passant.y][0] = temp[0];
-                    situation[passant.y][passant.y][1] = temp[1];
+                    situation[passant.x][passant.y][0] = temp[0];
+                    situation[passant.x][passant.y][1] = temp[1];
                 }
 
             }
@@ -308,7 +309,15 @@ function markValidMove(situation,board,piece){
         else if (piece.type[0] === "w" && piece.x + 1 <= 8) {
             if(piece.x===passant.x) {
                 if(piece.y===passant.y + 1||piece.y===passant.y - 1)
-                    board[piece.x + 1][passant.y] = 1 ;
+                {
+                    let temp = [];
+                    temp[0]=situation[passant.x][passant.y][0];
+                    temp[1]=situation[passant.x][passant.y][1];
+                    situation[passant.x][passant.y] = "  ";
+                    board[piece.x + 1][passant.y] = !suicide(situation,piece,piece.x + 1,piece.y) ;
+                    situation[passant.x][passant.y][0] = temp[0];
+                    situation[passant.x][passant.y][1] = temp[1];
+                }
             }
             if(situation[piece.x + 1][piece.y] === "  ")
             {
