@@ -271,6 +271,7 @@ function suicide(situation,piece,x,y)
         side = 0;
     return isCheck(situation1, side);
 }
+
 //在board中标出一个棋子能移动到的其它格子（不能走到不符合正常走法规则的格子，而且不能送将）
 /*调用markAttack*/
 function markValidMove(situation,board,piece){
@@ -589,13 +590,55 @@ function markValidMove(situation,board,piece){
 
 //检查某方是否无路可走
 /*调用markAttack*/
-function isEven(situation, side) {
-
+function isEven(situation,board,side){
+    if(side===0) {
+        let mark=0;
+        for(let i=1;i<=8;i++) {
+            for (let j = 1; j <= 8; j++) {
+                if (situation[i][j][0] === 'w') {
+                    let piece = {type: situation[i][j], x: i, y: j};
+                    markValidMove(situation,board,piece);
+                    for(let k=1;k<=8;k++) {
+                        for (let t = 1; t <= 8; t++) {
+                            if (board[k][t]) {
+                                mark++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       return mark === 0;
+    }
+    else if(side===1) {
+        let mark=0;
+        for(let i=1;i<=8;i++) {
+            for (let j = 1; j <= 8; j++) {
+                if (situation[i][j][0] === 'b') {
+                    let piece = {type: situation[i][j], x: i, y: j};
+                    markValidMove(situation,board,piece);
+                    for(let k=1;k<=8;k++){
+                        for(let t=1;t<=8;t++){
+                            if(board[k][t]){
+                                mark++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return mark === 0;//true表示无路可走
+    }
 }
 
 //（已知某方将军）检查某方是否将对方将杀（检查B能否应将
 /*调用isCheck*/
-function isCheckmate(situation, side) {
-
+function isCheckmate(situation,board,side){
+    if(side===0) {
+        return !!(isEven(situation, board, 0) && isCheck(situation, 1));
+    }
+    else if(side===1) {
+        return !!(isEven(situation, board, 1) && isCheck(situation, 0));
+    }
 }
 
