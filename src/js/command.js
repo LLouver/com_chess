@@ -88,7 +88,34 @@ function end(type,info){
 * */
 function move(lx,ly,cx,cy,playerSide){
     //console.log('player' + playerSide + ' made ' + lx + ly + cx + cy);
+    let p=gameSitu[lx][ly];
+    if(p === 'bk') isMoved.bk=true;
+    if(p === 'br' && lx === 1 && ly === 1) isMoved.br1=true;
+    if(p === 'br' && lx === 1 && ly === 8) isMoved.br8=true;
+    if(p === 'wk') isMoved.wk=true;
+    if(p === 'wr' && lx === 8 && ly === 1) isMoved.wr1=true;
+    if(p === 'wr' && lx === 8 && ly === 8) isMoved.wr8=true;
+
+    if(gameSitu[lx][ly][1]==='p' && lx === passant.x && cy === passant.y)
+        delPiece(passant.x,passant.y);
+
+    if(p[1] === 'p' && Math.abs(lx-cx)===2){
+        passant.x=cx;
+        passant.y=cy;
+    }
+    else{
+        passant.x=0;
+        passant.y=0;
+    }
+
     drawAnimation(lx,ly,cx,cy);
+    if(p[1] === 'k' && Math.abs(cy-ly)===2){
+        if(cy > ly)
+            drawAnimation(lx,8,lx,cy-1);
+        else
+            drawAnimation(lx,1,lx,cy+1);
+    }
+
     clearInterval(counting);
     restTime[playerSide] += stepTime;
     countDown(playerSide^1);
@@ -105,7 +132,6 @@ function move(lx,ly,cx,cy,playerSide){
             doRequest('/end ' + gameId + ' ' + side);
     }
 }
-
 
 //按下各个按钮需要执行的事件
 function clickReady(){
