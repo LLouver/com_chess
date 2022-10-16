@@ -445,7 +445,7 @@ function markValidMove(situation,board,piece){
             }
 
         }
-        for (let i = 1; i <= piece.x - 1; i--) {
+        for (let i = 1; i <= piece.x - 1; i++) {
             board[piece.x - i][piece.y] = !suicide(situation,piece,piece.x - i,piece.y);
             if (situation[piece.x - i][piece.y] !== "  ") {
                 if (situation[piece.x - i][piece.y][0] === situation[piece.x][piece.y][0])
@@ -463,14 +463,13 @@ function markValidMove(situation,board,piece){
             }
 
         }
-        for (let j = 1; j <= piece.y - 1; j--) {
+        for (let j = 1; j <= piece.y - 1; j++) {
             board[piece.x][piece.y - j] = !suicide(situation,piece,piece.x ,piece.y - j);
             if (situation[piece.x][piece.y - j] !== "  ") {
                 if (situation[piece.x][piece.y - j][0] === situation[piece.x][piece.y][0])
                     board[piece.x][piece.y - j] = 0;
                 break;
             }
-
         }
 
         let i = piece.x, j = piece.y;
