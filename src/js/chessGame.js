@@ -533,11 +533,11 @@ function markValidMove(situation,board,piece){
         if(piece.type[0] === 'w') {
             if(isMoved.wk===0) {
                 if(isMoved.wr1===0){
-                    if(situation[1][4] === "  " && situation[1][3] === "  ")
+                    if(situation[1][4] === "  " && situation[1][3] === "  " && situation[1][2] === "  ")
                         if(!isCheck(situation, 0) && !suicide(situation,piece,1,4) && !suicide(situation,piece,1,3))
                             board[1][3] = 1;
                 }
-                else if(isMoved.wr8===0){
+                if(isMoved.wr8===0){
                     if(situation[1][6] === "  " && situation[1][7] === "  ")
                         if(!isCheck(situation, 0) && !suicide(situation,piece,1,6) && !suicide(situation,piece,1,7))
                             board[1][7] = 1;
@@ -547,13 +547,13 @@ function markValidMove(situation,board,piece){
         else{
             if(isMoved.bk === 0) {
                 if(isMoved.br1 === 0){
-                    if(situation[8][4] === "  " && situation[8][3] === "  ")
-                        if(!isCheck(situation, 1) && !suicide(situation,piece,1,4) && !suicide(situation,piece,1,3))
+                    if(situation[8][4] === "  " && situation[8][3] === "  " && situation[8][2] === "  ")
+                        if(!isCheck(situation, 1) && !suicide(situation,piece,8,4) && !suicide(situation,piece,8,3))
                             board[8][3] = 1;
                 }
-                else if(isMoved.br8 === 0){
-                    if(situation[1][6] === "  " && situation[1][7] === "  ")
-                        if(!isCheck(situation, 1) && !suicide(situation,piece,1,6) && !suicide(situation,piece,1,7))
+                if(isMoved.br8 === 0){
+                    if(situation[8][6] === "  " && situation[8][7] === "  ")
+                        if(!isCheck(situation, 1) && !suicide(situation,piece,8,6) && !suicide(situation,piece,8,7))
                             board[8][7] = 1;
                 }
             }
