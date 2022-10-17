@@ -3,7 +3,10 @@
 "use strict";
 //改变窗口的大小，对应改变棋盘大小
 function resetBorderSize(){
-    let t = Math.floor(0.7*Math.min(window.innerWidth,window.innerHeight));
-    document.getElementById("board").style.width=t.toString()+"px";
-    document.getElementById("board").style.height=t.toString()+"px";
+    let w = window.innerWidth , h = window.innerHeight;
+    let m = Math.min(w,h);
+    document.getElementById("board").style.width     =(0.7*m).toString()+"px";
+    document.getElementById("board").style.height    =(0.7*m).toString()+"px";
+    document.getElementById("mainBoard").style.width =(0.7*m).toString()+"px";
+    document.getElementById("mainBoard").style.height=(0.8*m).toString()+"px";
 }

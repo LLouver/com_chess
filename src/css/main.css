@@ -4,9 +4,15 @@
     position: absolute;
     left: 10%;
     top: 15%;
+    width: 70%;
+    height: 70%;
+    min-width: 300px;
+    min-height: 300px;
 }
 /*棋盘*/
 #board{
+    position: absolute;
+    top:6%;
     box-sizing: border-box;
     background-color: green;
     width: 70%;
@@ -25,10 +31,6 @@
 
 /*格子*/
 .cell{
-    text-align: center;
-    padding: 0;
-    border: 0;
-    margin: 0;
 }
 .black{
     background-color: #769656;
@@ -127,4 +129,14 @@ input{
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+#enemyPlayer{
+    position: absolute;
+    top: 0;
+}
+
+#selfPlayer{
+    position: absolute;
+    bottom: 0;
 }
