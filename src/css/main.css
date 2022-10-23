@@ -71,7 +71,7 @@ input{
 #enemyPlayer,#selfPlayer{
     position: absolute;
     height:5%;
-    border: #45f3ff 5px solid;
+    border: #45f3ff 0px solid;
     box-sizing: border-box;
 
     font-size: 150%;

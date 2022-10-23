@@ -27,12 +27,12 @@ function showPlayerName(){
     let me=document.getElementById('meName');
     let opponent=document.getElementById('enemyName');
     if(side === 1) {
-        me.innerHTML += "<img src='/sources/wk.png' height='5%' width='5%'>";
-        opponent.innerHTML += "<img src='/sources/bk.png' height='5%' width='5%'>";
+        me.innerHTML += "<img src='/sources/wk.png' height='20px' width='20px'>";
+        opponent.innerHTML += "<img src='/sources/bk.png' height='20px' width='20px'>";
     }
     else{
-        me.innerHTML += "<img src='/sources/bk.png' height='5%' width='5%'>";
-        opponent.innerHTML += "<img src='/sources/wk.png' height='5%' width='5%'>";
+        me.innerHTML += "<img src='/sources/bk.png' height='20px' width='20px'>";
+        opponent.innerHTML += "<img src='/sources/wk.png' height='20px' width='20px'>";
     }
     me.innerHTML="<span>" + playerName[side] + "</span>";
     opponent.innerHTML= "<span>" + playerName[side^1] + "</span>";
