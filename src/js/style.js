@@ -9,4 +9,6 @@ function resetBorderSize(){
     document.getElementById("board").style.height    =(0.7*m).toString()+"px";
     document.getElementById("mainBoard").style.width =(0.7*m).toString()+"px";
     document.getElementById("mainBoard").style.height=(0.8*m).toString()+"px";
+    document.getElementById("buttonsList").style.top =(0.8*m).toString()+"px";
+
 }

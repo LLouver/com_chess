@@ -27,15 +27,15 @@ function showPlayerName(){
     let me=document.getElementById('meName');
     let opponent=document.getElementById('enemyName');
     if(side === 1) {
-        me.innerHTML += "<img src='/sources/wk.png' height='20px' width='20px'>";
-        opponent.innerHTML += "<img src='/sources/bk.png' height='20px' width='20px'>";
+        me.innerHTML = "<img src='../sources/images/wk.png' height='30px' width='30px'>";
+        opponent.innerHTML = "<img src='../sources/images/bk.png' height='30px' width='30px'>";
     }
     else{
-        me.innerHTML += "<img src='/sources/bk.png' height='20px' width='20px'>";
-        opponent.innerHTML += "<img src='/sources/wk.png' height='20px' width='20px'>";
+        me.innerHTML = "<img src='../sources/images/bk.png' height='30px' width='30px'>";
+        opponent.innerHTML = "<img src='../sources/images/wk.png' height='30px' width='30px'>";
     }
-    me.innerHTML="<span>" + playerName[side] + "</span>";
-    opponent.innerHTML= "<span>" + playerName[side^1] + "</span>";
+    me.innerHTML+="<span>" + playerName[side] + "</span>";
+    opponent.innerHTML+= "<span>" + playerName[side^1] + "</span>";
 }
 
 function showJoinBoard(swi){
@@ -109,6 +109,27 @@ function showMainBoard(){
             attackInfo[1][i][j]=0;
         }
     }
+
+    if(side === 1){
+        document.getElementById("queenButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/wq.png" width="50" height="50">';
+        document.getElementById("rookButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/wr.png" width="50" height="50">';
+        document.getElementById("knightButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/wn.png" width="50" height="50">';
+        document.getElementById("bishopButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/wb.png" width="50" height="50">';
+    }else{
+        document.getElementById("queenButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/bq.png" width="50" height="50">';
+        document.getElementById("rookButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/br.png" width="50" height="50">';
+        document.getElementById("knightButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/bn.png" width="50" height="50">';
+        document.getElementById("bishopButton").innerHTML=
+            '<img style="opacity: 100%" src="../sources/images/bb.png" width="50" height="50">';
+    }
+
 }
 //显示/隐藏时间设置框，隐藏时发送/setTime
 function showTimeSetting(swi){
