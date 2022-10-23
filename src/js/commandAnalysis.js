@@ -3,7 +3,6 @@
 "use strict";
 
 function doReceive(s){
-
     //console.log(s);
     if(s.indexOf('*') === 0){
         if(s.indexOf('joined')) {

@@ -17,6 +17,7 @@
 	<link type="text/css" href="css/main.css" rel="stylesheet">
 	<link type="text/css" href="css/piece.css" rel="stylesheet">
 	<link type="text/css" href="css/UI.css" rel="stylesheet">
+	<link type="text/css" href="css/timing.css" rel="stylesheet">
 	<script>
 		//游戏唯一识别id
         var gameId='0';
@@ -143,8 +144,11 @@
 	<button style="margin-left: 10px" id="settingButton" onclick="showTimeSetting(1)" hidden>设置时间</button>
 </div>
 
-<div id="waiting" hidden>
-	<img src="/sources/images/timing.gif">
+<div id="timing" hidden>
+	<div class="timing_loading">
+		<span class="timing_top"></span>
+		<span class="timing_bottom"></span>
+	</div>
 </div>
 
 <script>

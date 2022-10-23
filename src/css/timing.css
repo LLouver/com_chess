@@ -1,0 +1,113 @@
+#timing{
+    position: absolute;
+    /* 取消页面内外边距 */
+    /* 100%窗口高度 */
+    height: 100vh;
+    /* 弹性布局 水平、垂直居中 */
+    justify-content: center;
+    align-items: center;
+    /* 渐变背景 */
+    left: 40%;
+    top:40%;
+}
+.timing_loading{
+    width: 86px;
+    height: 196px;
+    /* 相对定位 */
+    position: relative;
+    /* 弹性布局 */
+    display: flex;
+    /* 将元素垂直显示 */
+    flex-direction: column;
+    /* 将元素靠边对齐 */
+    justify-content: space-between;
+    align-items: center;
+    /* 执行动画：动画 时长 线性的 无限次播放 */
+    animation: rotating 2s linear infinite;
+}
+/* 添加流下的元素 */
+.timing_loading::after{
+    content: "";
+    width: 5px;
+    height: 96px;
+    background-color: #cabbe9;
+    /* 绝对定位 */
+    position: absolute;
+    top: 20px;
+    /* 执行动画 */
+    animation: flow 2s linear infinite;
+}
+/* 沙漏上下两个容器 */
+.timing_top,.timing_bottom{
+    width: 70px;
+    height: 70px;
+    border-style: solid;
+    border-color: #dcdcdc;
+    border-width: 4px 4px 12px 12px;
+    border-radius: 50% 100% 50% 30%;
+    position: relative;
+    overflow: hidden;
+}
+.timing_top{
+    /* 旋转-45度 */
+    transform: rotate(-45deg);
+}
+.timing_bottom{
+    /* 旋转135度 */
+    transform: rotate(135deg);
+}
+.timing_top::before,
+.timing_bottom::before{
+    content: "";
+    /* 绝对定位 */
+    position: absolute;
+    /* inherit表示继承父元素（这里指宽高） */
+    width: inherit;
+    height: inherit;
+    background-color: #cabbe9;
+    /* 执行动画，先设置动画的参数，不指定动画名称 */
+    animation: 2s linear infinite;
+}
+.timing_top::before{
+    /* 通过设置圆角改变沙的形状 */
+    border-radius: 0 100% 0 0;
+    /* 指定执行的动画 */
+    animation-name: drop-sand;
+}
+.timing_bottom::before{
+    /* 通过设置圆角改变沙的形状 */
+    border-radius: 0 0 0 25%;
+    /* 指定执行的动画 */
+    animation-name: fill-sand;
+    /* 把下面的沙移出可视范围 */
+    transform: translate(50px,-50px);
+}
+
+/* 定义动画 */
+/* 落沙动画 */
+@keyframes drop-sand{
+    to{
+        transform: translate(-50px,50px);
+    }
+}
+/* 填沙动画 */
+@keyframes fill-sand{
+    to{
+        transform: translate(0,0);
+    }
+}
+/* 沙流下动画 */
+@keyframes flow{
+    10%,100%{
+        transform: translateY(64px);
+    }
+}
+/* 沙漏旋转动画 */
+@keyframes rotating{
+    0%,90%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}

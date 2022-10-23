@@ -24,9 +24,18 @@ function showSituation(situation){
 
 //显示/隐藏host join框
 function showPlayerName(){
-    document.getElementById('meName').innerHTML=playerName[side];
-    document.getElementById('enemyName').innerHTML=playerName[side^1];
-
+    let me=document.getElementById('meName');
+    let opponent=document.getElementById('enemyName');
+    if(side === 1) {
+        me.innerHTML += "<img src='/sources/wk.png' height='5%' width='5%'>";
+        opponent.innerHTML += "<img src='/sources/bk.png' height='5%' width='5%'>";
+    }
+    else{
+        me.innerHTML += "<img src='/sources/bk.png' height='5%' width='5%'>";
+        opponent.innerHTML += "<img src='/sources/wk.png' height='5%' width='5%'>";
+    }
+    me.innerHTML="<span>" + playerName[side] + "</span>";
+    opponent.innerHTML= "<span>" + playerName[side^1] + "</span>";
 }
 
 function showJoinBoard(swi){

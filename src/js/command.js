@@ -7,6 +7,7 @@ function host(id,name,str_sideChose){
     side=parseInt(str_sideChose);
     playerName[side]=name;
     isHost=1;
+    document.getElementById("timing").hidden=false;
     //document.getElementById('selfPlayer').innerHTML=name;
 }
 
@@ -25,6 +26,7 @@ function accept(name,str_sideChose){
         side=parseInt(str_sideChose);
         playerName[side^1]=name;
     }
+    document.getElementById("timing").hidden=true;
     showButtonList(1);
     showJoinBoard(0);
     document.getElementById('mainBoard').hidden=false;
