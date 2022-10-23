@@ -77,12 +77,8 @@
 	</div>
 </div>
 
-<div id="readyButton" onclick="clickReady() " hidden>准备</div>
-
-<div id="settingButton" onclick="showTimeSetting(1)" hidden>设置时间</div>
-
 <div id="inputBlock" class="box" hidden = "hidden">
-	<form autocomplete="off">
+	<div class="myForm">
 		<h2>加入或主持一场比赛</h2>
 		<div class="inputBox">
 
@@ -96,41 +92,59 @@
 			<span>房 间</span>
 			<i></i>
 		</div>
-		<input type="submit" value="主持！" onclick="clickHost()">
-		<input type="submit" value="加入！" onclick="clickJoin()">
+		<button style="margin-left: 30%" onclick="clickHost()">主持！</button>
+		<button style="margin-left: 30%" onclick="clickJoin()">加入！</button>
+	</div>
+</div>
+
+<div id="timeSettingBlock" class="box" hidden = "hidden">
+	<form autocomplete="off">
+		<h2>时间设置</h2>
+		<div class="inputBox">
+
+			<input id="globalTimeInput" type="text" required="required">
+			<span>局 时 </span>
+			<i></i>
+		</div>
+		<div class="inputBox">
+
+			<input id="stepTimeInput" type="text" required="required">
+			<span>步 时 </span>
+			<i></i>
+		</div>
+		<input type="submit" value="保存" onclick="clickSetTime()">
+		<input type="submit" value="取消" onclick="showTimeSetting(0)">
 	</form>
 </div>
 
-<div id="timeSettingBlock" hidden = "hidden">
-	<div style="margin: auto">时间设置</div>
-	<div style="margin: auto">
-		局 时 <input id="globalTimeInput" > s
-	</div>
-	<div style="margin: auto">
-		步 时 <input id="stepTimeInput"> s
-	</div>
-
-	<div style="margin: auto; width: 50%; height: 40%; display: flex ; flex-direction: row; justify-content: space-around">
-		<div id="OKButton" class="button" onclick="clickSetTime()" style="display: flex ; flex-direction: row; justify-content: space-around">保存</div>
-		<div id="cancelButton" class="button" onclick="showTimeSetting(0)" style="display: flex ; flex-direction: row; justify-content: space-around">取消</div>
-	</div>
-
-</div>
-
-<div id="chooseBlock" hidden>
-	<div style=" height:20%; display: flex;margin-top:30%; flex-direction: row; justify-content: space-around">
-		<div id="chooseButton0" class="button" onclick="clickChose(1)" style="display: flex ; flex-direction: row; justify-content: space-around">执白</div>
-		<div id="chooseButton1" class="button" onclick="clickChose(0)" style="display: flex ; flex-direction: row; justify-content: space-around">执黑</div>
+<div id="chooseBlock" class="box" hidden>
+	<div class="myForm">
+		<h2>我下？</h2>
+		<button id="chooseWhite" style="margin-left: 30%" onclick="clickChose(1)">
+			<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png" width="50" height="50">
+		</button>
+		<button id="chooseBlack" style="margin-left: 30%" onclick="clickChose(0)">
+			<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png" width="50" height="50">
+		</button>
 	</div>
 </div>
 
-<div id="upgradeBlock" hidden>
+<div id="upgradeBlock" class="box" hidden>
 	<div style="margin: auto; width: 50%; height: 40%; display: flex ; flex-direction: row; justify-content: space-around">
 		<div id="queenButton" class="button" onclick="clickUpgrade('q')" style="display: flex ; flex-direction: row; justify-content: space-around">后</div>
 		<div id="rookButton"  class="button" onclick="clickUpgrade('r')" style="display: flex ; flex-direction: row; justify-content: space-around">车</div>
 		<div id="bishopButton" class="button" onclick="clickUpgrade('b')" style="display: flex ; flex-direction: row; justify-content: space-around">象</div>
 		<div id="knightButton" class="button" onclick="clickUpgrade('n')" style="display: flex ; flex-direction: row; justify-content: space-around">马</div>
 	</div>
+</div>
+
+<div id="buttonsList">
+	<button style="margin-left: 10px" id="readyButton" onclick="clickReady() " hidden>准备</button>
+	<button style="margin-left: 10px" id="settingButton" onclick="showTimeSetting(1)" hidden>设置时间</button>
+</div>
+
+<div id="waiting" hidden>
+	<img src="/sources/images/timing.gif">
 </div>
 
 <script>

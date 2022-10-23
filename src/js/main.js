@@ -50,7 +50,7 @@ function showSideChoose(swi){
     }
 }
 
-function showReadyButton(swi){
+function showButtonList(swi){
     if(swi) {
         document.getElementById('readyButton').hidden = false;
         document.getElementById('settingButton').hidden = false;
@@ -103,15 +103,9 @@ function showMainBoard(){
 }
 //显示/隐藏时间设置框，隐藏时发送/setTime
 function showTimeSetting(swi){
-    if(swi)
-        document.getElementById('timeSettingBlock').hidden = false;
-    else
-        document.getElementById('timeSettingBlock').hidden = true;
+    document.getElementById('timeSettingBlock').hidden = !swi;
 }
 
 function showUpgradeBoard(swi){
-    if(swi)
-        document.getElementById('upgradeBlock').hidden=false;
-    else
-        document.getElementById('upgradeBlock').hidden=true;
+    document.getElementById('upgradeBlock').hidden = !swi;
 }

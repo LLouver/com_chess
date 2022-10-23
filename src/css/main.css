@@ -2,8 +2,8 @@
 #mainBoard{
     background-color: white;
     position: absolute;
-    left: 10%;
-    top: 15%;
+    left: 5%;
+    top: 5%;
     width: 70%;
     height: 70%;
     min-width: 300px;
@@ -51,33 +51,6 @@
     border: 5px purple solid;
 }
 
-#chooseBlock{
-    background-color: #312e2b;
-    color:whitesmoke;
-    position: absolute;
-    left: 20%;
-    top:20%;
-
-}
-#timeSettingBlock{
-    background-color: #312e2b;
-    color:whitesmoke;
-    position: absolute;
-    left: 20%;
-    top:20%;
-
-}
-
-#upgradeBlock{
-    background-color: #312e2b;
-    color:whitesmoke;
-    position: absolute;
-    left: 20%;
-    top:20%;
-    height: 50%;
-    width:30%;
-}
-
 input{
     width: 70%;
     height: 30px;
@@ -96,30 +69,6 @@ input{
     border-radius: 15px;
 }
 
-#readyButton{
-    margin: 5px;
-    color: #f7f72b;
-    background-color:dimgray ;
-    border-radius: 8px;
-    height: 20px;
-    width: 80px;
-    padding-left: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-#settingButton{
-    margin: 5px;
-    color: #f7f72b;
-    background-color:dimgray ;
-    border-radius: 8px;
-    height: 20px;
-    width: 80px;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 #enemyPlayer{
     position: absolute;
     top: 0;
@@ -128,4 +77,31 @@ input{
 #selfPlayer{
     position: absolute;
     bottom: 0;
+}
+
+#buttonsList{
+    display: flex;
+    justify-content: space-around;
+    direction: rtl;
+    position: absolute;
+    top: 85%;
+    left: 10%;
+}
+
+button{
+    color: #8f8f8f;
+    background-color: #1c1c1c;
+    border: 2px #769656 solid;
+    border-radius: 8px;
+
+    width: 100px;
+    height: 68px;
+
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #769656;
+    color: white;
+    transition: 0.3s;
 }

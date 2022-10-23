@@ -25,7 +25,7 @@ function accept(name,str_sideChose){
         side=parseInt(str_sideChose);
         playerName[side^1]=name;
     }
-    showReadyButton(1);
+    showButtonList(1);
     showJoinBoard(0);
     document.getElementById('mainBoard').hidden=false;
     showPlayerName();
@@ -56,7 +56,7 @@ function begin(){
     console.log("began!")
     document.getElementById('meCounting').innerHTML=(Math.floor(restTime[side]/60)) + ' : ' + (restTime[side]%60);
     document.getElementById('enemyCounting').innerHTML=(Math.floor(restTime[side^1]/60)) + ' : ' + (restTime[side^1]%60);
-    showReadyButton(0);
+    showButtonList(0);
     showTimeSetting(0);
     started=1;
     ready[0]=ready[1]=0;
