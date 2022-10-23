@@ -53,6 +53,7 @@ function choosePiece(x,y){
 }
 
 function markCheck(side){
+    console.log("now marking check");
     let str=(side===1?'bk':'wk');
     for(let i = 1 ; i <= 8 ; ++ i) {
         for (let j = 1; j <= 8; ++j) {
@@ -64,7 +65,7 @@ function markCheck(side){
 
 function addPiece(x,y,s){
     let str='cell'+x+y;
-    document.getElementById(str).innerHTML="<div class='piece " + s + "'></div>";
+    document.getElementById(str).innerHTML="<div id='"+ x + y + s + "' class='piece " + s + "'></div>";
 }
 
 function delPiece(x,y){

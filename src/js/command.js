@@ -103,6 +103,7 @@ function move(lx,ly,cx,cy,playerSide){
     if(p[1] === 'p' && Math.abs(lx-cx)===2){
         passant.x=cx;
         passant.y=cy;
+        console.log("now passant " + cx + cy);
     }
     else{
         passant.x=0;
@@ -124,9 +125,10 @@ function move(lx,ly,cx,cy,playerSide){
         return ;
     }
     movable=1;
+
     if(isCheck(gameSitu,side^1)){
         markCheck(side^1);
-        console.log('now checkmating: ' + isCheckmate(gameSitu,moveInfo[side],side^1));
+        //console.log('now checkmating: ' + isCheckmate(gameSitu,moveInfo[side],side^1));
         if(isCheckmate(gameSitu,moveInfo[side],side^1))
             doRequest('/end ' + gameId + ' ' + (side^1));
     }
@@ -135,12 +137,11 @@ function move(lx,ly,cx,cy,playerSide){
     }
 }
 
-function change(str_x,str_y,type){
-    console.log(str_x + ' ' + str_y + ' ' + type);
-    let x = parseInt(str_x),y=parseInt(str_y);
-    gameSitu[x][y]=gameSitu[x][y][0] + type;
+function change(x,y,type){
+    type=gameSitu[x][y][0] + type;
     delPiece(x,y);
-    addPiece(x,y);
+    addPiece(x,y,type);
+    gameSitu[x][y]=type;
 }
 
 //按下各个按钮需要执行的事件
@@ -150,6 +151,10 @@ function clickReady(){
 }
 
 function clickHost(){
+    let i = document.getElementById('inputGameId').value;
+    let n = document.getElementById('inputPlayerName').value;
+    if(i === '' || n === '')
+        return;
     showJoinBoard(0);
     showSideChoose(1);
 }
@@ -157,6 +162,8 @@ function clickHost(){
 function clickJoin(){
     let i = document.getElementById('inputGameId').value;
     let n = document.getElementById('inputPlayerName').value;
+    if(i === '' || n === '')
+        return;
     doRequest('/join ' + i + ' ' + n);
     playerName[0] = playerName[1] = n;
     gameId=i;
@@ -178,7 +185,6 @@ function clickSetTime(){
 
 function clickUpgrade(s){
     console.log('now chosen ' + chosenPiece[0] + ' ' + chosenPiece[1]);
-    doRequest('/change ' + gameId + ' ' + chosenPiece[0] + ' ' + chosenPiece[1] + ' ' + s);
-    doRequest('/move ' + gameId + ' ' + chosenPiece[0] + ' ' + chosenPiece[1] + ' ' + chosenToGo[0] + ' ' + chosenToGo[1] + ' ' + side);
+    doRequest('/move ' + gameId + ' ' + chosenPiece[0] + ' ' + chosenPiece[1] + ' ' + chosenToGo[0] + ' ' + chosenToGo[1] + ' ' + side + ' ' + s);
     showUpgradeBoard(0);
 }

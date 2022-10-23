@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Chess</title>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 	<script type="text/javascript" src="js/style.js"></script>
 	<script type="text/javascript" src="js/command.js"></script>
@@ -15,6 +16,7 @@
 	<script type="text/javascript" src="js/debug.js"></script>
 	<link type="text/css" href="css/main.css" rel="stylesheet">
 	<link type="text/css" href="css/piece.css" rel="stylesheet">
+	<link type="text/css" href="css/UI.css" rel="stylesheet">
 	<script>
 		//游戏唯一识别id
         var gameId='0';
@@ -79,20 +81,24 @@
 
 <div id="settingButton" onclick="showTimeSetting(1)" hidden>设置时间</div>
 
-<div id="inputBlock" hidden = "hidden">
-	<div style="margin: auto">加入或主持一场比赛</div>
-	<label style="margin: auto">
-		昵 称 <input id="inputPlayerName" >
-	</label>
-	<label style="margin: auto">
-		房 间 <input id="inputGameId">
-	</label>
+<div id="inputBlock" class="box" hidden = "hidden">
+	<form autocomplete="off">
+		<h2>加入或主持一场比赛</h2>
+		<div class="inputBox">
 
-	<div style="margin: auto; width: 50%; height: 40%; display: flex ; flex-direction: row; justify-content: space-around">
-		<div id="hostButton" class="button" onclick="clickJoin()" style="display: flex ; flex-direction: row; justify-content: space-around">加入！</div>
-		<div id="joinButton" class="button" onclick="clickHost()" style="display: flex ; flex-direction: row; justify-content: space-around">主持！</div>
-	</div>
+			<input id="inputPlayerName" type="text" required="required">
+			<span>昵 称</span>
+			<i></i>
+		</div>
+		<div class="inputBox">
 
+			<input id="inputGameId" type="text" required="required">
+			<span>房 间</span>
+			<i></i>
+		</div>
+		<input type="submit" value="主持！" onclick="clickHost()">
+		<input type="submit" value="加入！" onclick="clickJoin()">
+	</form>
 </div>
 
 <div id="timeSettingBlock" hidden = "hidden">

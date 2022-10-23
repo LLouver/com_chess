@@ -51,23 +51,13 @@
     border: 5px purple solid;
 }
 
-#inputBlock{
-    background-color: #312e2b;
-    color:whitesmoke;
-    position: absolute;
-    left: 20%;
-    top:20%;
-    height: 50%;
-    width:50%;
-}
 #chooseBlock{
     background-color: #312e2b;
     color:whitesmoke;
     position: absolute;
     left: 20%;
     top:20%;
-    height: 50%;
-    width:50%;
+
 }
 #timeSettingBlock{
     background-color: #312e2b;
@@ -75,8 +65,7 @@
     position: absolute;
     left: 20%;
     top:20%;
-    height: 50%;
-    width:30%;
+
 }
 
 #upgradeBlock{

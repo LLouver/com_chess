@@ -282,13 +282,11 @@ function markValidMove(situation,board,piece){
             {
                 if(piece.y===passant.y + 1||piece.y===passant.y - 1)
                 {
-                    let temp = [];
-                    temp[0]=situation[passant.x][passant.y][0];
-                    temp[1]=situation[passant.x][passant.y][1];
+                    let temp;
+                    temp=situation[passant.x][passant.y];
                     situation[passant.x][passant.y] = "  ";
                     board[piece.x - 1][passant.y] = !suicide(situation,piece,piece.x - 1,piece.y) ;
-                    situation[passant.x][passant.y][0] = temp[0];
-                    situation[passant.x][passant.y][1] = temp[1];
+                    situation[passant.x][passant.y] = temp;
                 }
 
             }
@@ -310,13 +308,11 @@ function markValidMove(situation,board,piece){
             if(piece.x===passant.x) {
                 if(piece.y===passant.y + 1||piece.y===passant.y - 1)
                 {
-                    let temp = [];
-                    temp[0]=situation[passant.x][passant.y][0];
-                    temp[1]=situation[passant.x][passant.y][1];
+                    let temp;
+                    temp=situation[passant.x][passant.y];
                     situation[passant.x][passant.y] = "  ";
                     board[piece.x + 1][passant.y] = !suicide(situation,piece,piece.x + 1,piece.y) ;
-                    situation[passant.x][passant.y][0] = temp[0];
-                    situation[passant.x][passant.y][1] = temp[1];
+                    situation[passant.x][passant.y] = temp;
                 }
             }
             if(situation[piece.x + 1][piece.y] === "  ")

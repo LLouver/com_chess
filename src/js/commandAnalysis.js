@@ -51,12 +51,10 @@ function doReceive(s){
         case '/move'://id lx ly cx xy side
             if(args[1]!==gameId)
                 return;
+            if(args[7] !=null &&args[7]!==undefined){
+                change(parseInt(args[2]),parseInt(args[3]),args[7]);
+            }
             move(parseInt(args[2]),parseInt(args[3]),parseInt(args[4]),parseInt(args[5]),parseInt(args[6]));
-            break;
-        case '/change'://id x y type
-            if(args[1]!==gameId)
-                return;
-            change(args[2],args[3],args[4]);
             break;
     }
 }
