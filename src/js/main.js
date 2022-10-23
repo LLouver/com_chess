@@ -78,7 +78,7 @@ function showMainBoard(){
         for (let i = 8; i >= 1; --i) {
             for (let j = 1; j <= 8; ++j) {
                 let id = '"cell' + i + j + '"';
-                let c = "<div onclick='onClicked(" + i + ',' + j + ")' id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + i + " " + j + "</div>";
+                let c = "<div onclick='onClicked(" + i + ',' + j + ")' id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + "</div>";
                 document.getElementById("board").innerHTML += c;
             }
         }
@@ -88,7 +88,7 @@ function showMainBoard(){
         for (let i = 1; i <= 8; ++i) {
             for (let j = 8; j >= 1; --j) {
                 let id = '"cell' + i + j + '"';
-                let c = "<div onclick='onClicked(" + i + ',' + j + ")' id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + i + " " + j + "</div>";
+                let c = "<div onclick='onClicked(" + i + ',' + j + ")' id=" + id + " class='cell " + ((i + j) % 2 === 1 ? "white" : "black") + "'>" + "</div>";
                 document.getElementById("board").innerHTML += c;
             }
         }

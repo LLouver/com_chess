@@ -71,6 +71,6 @@ function addPiece(x,y,s){
 function delPiece(x,y){
     let str='cell'+x+y;
     console.log(str);
-    document.getElementById(str).innerHTML=x+' '+y;
+    document.getElementById(str).innerHTML='';
 }
 

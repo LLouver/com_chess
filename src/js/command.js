@@ -26,6 +26,7 @@ function accept(name,str_sideChose){
         side=parseInt(str_sideChose);
         playerName[side^1]=name;
     }
+    alert("比赛房间已成功创建！当前游戏设置为：局时" + restTime[0] +'s，步时' + stepTime + 's，你执' + (side===1?"白":"黑"));
     document.getElementById("timing").hidden=true;
     showButtonList(1);
     showJoinBoard(0);
@@ -50,7 +51,7 @@ function setTime(str_a,str_b){
     restTime[0]=parseInt(str_a);
     restTime[1]=parseInt(str_a);
     stepTime=parseInt(str_b);
-    console.log('setTime ' + str_a + str_b);
+    alert("时间被设置为：局时"+restTime[0]+'s，步时'+stepTime+'s。');
 }
 
 //设置开始标志并且激活白方走棋
