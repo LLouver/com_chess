@@ -27,12 +27,12 @@ function showPlayerName(){
     let me=document.getElementById('meName');
     let opponent=document.getElementById('enemyName');
     if(side === 1) {
-        me.innerHTML = "<img src='../sources/images/wk.png' height='30px' width='30px'>";
-        opponent.innerHTML = "<img src='../sources/images/bk.png' height='30px' width='30px'>";
+        me.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png' alt='/resources/images/wk.png' height='30px' width='30px'>";
+        opponent.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png' alt='/resources/images/bk.png' height='30px' width='30px'>";
     }
     else{
-        me.innerHTML = "<img src='../sources/images/bk.png' height='30px' width='30px'>";
-        opponent.innerHTML = "<img src='../sources/images/wk.png' height='30px' width='30px'>";
+        me.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png' alt='/resources/images/bk.png' height='30px' width='30px'>";
+        opponent.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png' alt='/resources/images/wk.png' height='30px' width='30px'>";
     }
     me.innerHTML+="<span>" + playerName[side] + "</span>";
     opponent.innerHTML+= "<span>" + playerName[side^1] + "</span>";
@@ -112,22 +112,22 @@ function showMainBoard(){
 
     if(side === 1){
         document.getElementById("queenButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/wq.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wq.png" alt="/resources/images/wq.png" width="50" height="50">';
         document.getElementById("rookButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/wr.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wr.png" alt="/resources/images/wr.png" width="50" height="50">';
         document.getElementById("knightButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/wn.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wn.png" alt="/resources/images/wn.png" width="50" height="50">';
         document.getElementById("bishopButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/wb.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wb.png" alt="/resources/images/wb.png" width="50" height="50">';
     }else{
         document.getElementById("queenButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/bq.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bq.png" alt="/resources/images/bq.png" width="50" height="50">';
         document.getElementById("rookButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/br.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/br.png" alt="/resources/images/br.png" width="50" height="50">';
         document.getElementById("knightButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/bn.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bn.png" alt="/resources/images/bn.png" width="50" height="50">';
         document.getElementById("bishopButton").innerHTML=
-            '<img style="opacity: 100%" src="../sources/images/bb.png" width="50" height="50">';
+            '<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bb.png" alt="/resources/images/bb.png" width="50" height="50">';
     }
 
 }

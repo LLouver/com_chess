@@ -73,10 +73,12 @@ function begin(){
         attackInfo[0][i]=[];
         attackInfo[1][i]=[];
     }
+    document.getElementById("bgm").play();
 }
 
 //设置开始标志并重置比赛
 function end(type,info){
+    document.getElementById("bgm").pause();
     if(type==='e')
         alert("平局");
     else if(parseInt(type)===side)
@@ -94,11 +96,11 @@ function move(lx,ly,cx,cy,playerSide){
     cancelChoosePiece();
     let p=gameSitu[lx][ly];
     if(p === 'bk') isMoved.bk=true;
-    if(p === 'br' && lx === 1 && ly === 1) isMoved.br1=true;
-    if(p === 'br' && lx === 1 && ly === 8) isMoved.br8=true;
+    if(p === 'br' && ly === 1) isMoved.br1=true;
+    if(p === 'br' && ly === 8) isMoved.br8=true;
     if(p === 'wk') isMoved.wk=true;
-    if(p === 'wr' && lx === 8 && ly === 1) isMoved.wr1=true;
-    if(p === 'wr' && lx === 8 && ly === 8) isMoved.wr8=true;
+    if(p === 'wr' && ly === 1) isMoved.wr1=true;
+    if(p === 'wr' && ly === 8) isMoved.wr8=true;
 
     if(gameSitu[lx][ly][1]==='p' && lx === passant.x && cy === passant.y)
         delPiece(passant.x,passant.y);
