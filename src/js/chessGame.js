@@ -648,9 +648,9 @@ function isEven(situation,board,side){
 //（已知某方将军）检查某方是否将对方将杀（检查B能否应将
 /*调用isCheck*/
 function isCheckmate(situation,board,side){
-    console.log('checkmating' + side);
-    console.log('isEven' + isEven(situation, board, 0));
-    console.log('isCheck' + isCheck(situation, 1));
+    //console.log('checkmating' + side);
+    //console.log('isEven' + isEven(situation, board, 0));
+    //console.log('isCheck' + isCheck(situation, 1));
     if(side===1) {
         return (isEven(situation, board, 0) && isCheck(situation, 1));
     }

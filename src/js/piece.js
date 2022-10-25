@@ -42,7 +42,7 @@ function choosePiece(x,y){
     let c=(gameSitu[x][y][0]==='w'?1:0);
     let piece={type:gameSitu[x][y],x:x,y:y};
     markValidMove(gameSitu,moveInfo[c],piece);
-    console.log(moveInfo[c]);
+    //console.log(moveInfo[c]);
     for(let i = 1 ; i <= 8 ; ++ i){
         for(let j = 1 ; j <= 8 ; ++ j){
             if(moveInfo[c][i][j]){
@@ -53,7 +53,7 @@ function choosePiece(x,y){
 }
 
 function markCheck(side){
-    console.log("now marking check");
+    //console.log("now marking check");
     let str=(side===1?'bk':'wk');
     for(let i = 1 ; i <= 8 ; ++ i) {
         for (let j = 1; j <= 8; ++j) {
@@ -70,7 +70,7 @@ function addPiece(x,y,s){
 
 function delPiece(x,y){
     let str='cell'+x+y;
-    console.log(str);
+    //console.log(str);
     document.getElementById(str).innerHTML='';
 }
 

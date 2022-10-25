@@ -1,6 +1,0 @@
-function markBlackAttack(){
-
-}
-function markWhiteAttack(){
-
-}

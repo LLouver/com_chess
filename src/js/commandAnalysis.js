@@ -20,7 +20,7 @@ function doReceive(s){
     //console.log("rec:" + args);
     switch (args[0]){
         case '/host'://id,name,side
-            console.log('a room created');
+            //console.log('a room created');
             break;
         case '/join'://id game
             if(args[1]!==gameId || args[2] === playerName[side])

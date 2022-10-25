@@ -58,7 +58,7 @@ function setTime(str_a,str_b){
 
 //设置开始标志并且激活白方走棋
 function begin(){
-    console.log("began!")
+    //console.log("began!")
     document.getElementById('meCounting').innerHTML=(Math.floor(restTime[side]/60)) + ' : ' + (restTime[side]%60);
     document.getElementById('enemyCounting').innerHTML=(Math.floor(restTime[side^1]/60)) + ' : ' + (restTime[side^1]%60);
     showButtonList(0);
@@ -83,6 +83,7 @@ function begin(){
 function end(type,info){
     document.getElementById("audio_end").play();
     document.getElementById("audio_bgm").pause();
+    console.log("game ended "+info);
     if(type==='e')
         alert("平局");
     else if(parseInt(type)===side)
@@ -118,7 +119,7 @@ function move(lx,ly,cx,cy,playerSide){
     if(p[1] === 'p' && Math.abs(lx-cx)===2){
         passant.x=cx;
         passant.y=cy;
-        console.log("now passant " + cx + cy);
+        //console.log("now passant " + cx + cy);
     }
     else{
         passant.x=0;
@@ -194,7 +195,7 @@ function clickJoin(){
 }
 
 function clickChose(side){
-    console.log(side);
+    //console.log(side);
     let i = document.getElementById('inputGameId').value;
     let n = document.getElementById('inputPlayerName').value;
     showSideChoose(0);
@@ -213,7 +214,7 @@ function clickSetTime(){
 }
 
 function clickUpgrade(s){
-    console.log('now chosen ' + chosenPiece[0] + ' ' + chosenPiece[1]);
+    //console.log('now chosen ' + chosenPiece[0] + ' ' + chosenPiece[1]);
     doRequest('/move ' + gameId + ' ' + chosenPiece[0] + ' ' + chosenPiece[1] + ' ' + chosenToGo[0] + ' ' + chosenToGo[1] + ' ' + side + ' ' + s);
     showUpgradeBoard(0);
 }

@@ -86,13 +86,13 @@
 		<h2>加入或主持一场比赛</h2>
 		<div class="inputBox">
 
-			<input id="inputPlayerName" type="text" required="required">
+			<label for="inputPlayerName"></label><input id="inputPlayerName" type="text" required="required">
 			<span>昵 称</span>
 			<i></i>
 		</div>
 		<div class="inputBox">
 
-			<input id="inputGameId" type="text" required="required">
+			<label for="inputGameId"></label><input id="inputGameId" type="text" required="required">
 			<span>房 间</span>
 			<i></i>
 		</div>
@@ -106,13 +106,13 @@
 		<h2>时间设置</h2>
 		<div class="inputBox">
 
-			<input id="globalTimeInput" type="text" required="required">
+			<label for="globalTimeInput"></label><input id="globalTimeInput" type="text" required="required">
 			<span>局 时 </span>
 			<i></i>
 		</div>
 		<div class="inputBox">
 
-			<input id="stepTimeInput" type="text" required="required">
+			<label for="stepTimeInput"></label><input id="stepTimeInput" type="text" required="required">
 			<span>步 时 </span>
 			<i></i>
 		</div>
@@ -163,15 +163,6 @@
 </div>
 
 <div hidden>
-	<!--
-	<audio id="audio_bgm" loop src="/resources/audio/beijingyinyue.ogg"></audio>
-	<audio id="audio_check" src="/resources/audio/move-check.webm"></audio>
-	<audio id="audio_move" src="/resources/audio/move-self.webm"></audio>
-	<audio id="audio_capture" src="/resources/audio/capture.webm"></audio>
-	<audio id="audio_end" src="/resources/audio/game-end.webm"></audio>
-	<audio id="audio_start" src="/resources/audio/game-start.webm"></audio>
-	<audio id="audio_illegal" src="/resources/audio/illegal.webm"></audio>
-	-->
 	<audio id="audio_waiting" loop src="./resources/audio/denghouyinyue.ogg"></audio>
 	<audio id="audio_bgm" loop src="./resources/audio/beijingyinyue.ogg"></audio>
 	<audio id="audio_check" src="./resources/audio/jiangjun.wav"></audio>
@@ -182,7 +173,7 @@
 	<audio id="audio_illegal" src="./resources/audio/illegal.webm"></audio>
 	<audio id="audio_choose" src="./resources/audio/xuanzhong.wav"></audio>
 	<audio id="audio_upgrade" src="./resources/audio/shengbian.wav"></audio>
-	<img id='waiting' src='http://192.168.31.41:9010/chess/resources/images/waiting.gif' height='20px'>
+	<img id='waiting' src='http://192.168.31.41:9010/chess/resources/images/waiting.gif' height='20px' alt="not found">
 </div>
 
 
@@ -196,7 +187,6 @@
         //数组从位置1开始，位置0直接为空，不用管
         gameSitu[i]=[]; //数组每一个元素为一个数组
     }
-    //delPiece(3,5);
     showJoinBoard(1);
     document.getElementById("audio_waiting").volume=0.3;
     document.getElementById("audio_bgm").volume=0.5;

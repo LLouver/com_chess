@@ -1,3 +1,6 @@
+//debug.js
+//用于调试
+/*
 function de(a){
     for(let i = 1 ; i <= 8 ; ++ i){
         let t='';
@@ -5,4 +8,4 @@ function de(a){
             t += a[i][j] + ' ';
         console.log(t);
     }
-}
+}*/
