@@ -26,16 +26,17 @@ function showSituation(situation){
 function showPlayerName(){
     let me=document.getElementById('meName');
     let opponent=document.getElementById('enemyName');
+    me.innerHTML ="<span>" + playerName[side] + "</span>";
+    opponent.innerHTML = "<span>" + playerName[side^1] + "</span>";
     if(side === 1) {
-        me.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png' alt='/resources/images/wk.png' height='30px' width='30px'>";
-        opponent.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png' alt='/resources/images/bk.png' height='30px' width='30px'>";
+        me.innerHTML += "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png' alt='/resources/images/wk.png' height='30px' width='30px'>";
+        opponent.innerHTML += "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png' alt='/resources/images/bk.png' height='30px' width='30px'>";
     }
     else{
-        me.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png' alt='/resources/images/bk.png' height='30px' width='30px'>";
-        opponent.innerHTML = "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png' alt='/resources/images/wk.png' height='30px' width='30px'>";
+        me.innerHTML += "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png' alt='/resources/images/bk.png' height='30px' width='30px'>";
+        opponent.innerHTML += "<img src='https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png' alt='/resources/images/wk.png' height='30px' width='30px'>";
     }
-    me.innerHTML+="<span>" + playerName[side] + "</span>";
-    opponent.innerHTML+= "<span>" + playerName[side^1] + "</span>";
+
 }
 
 function showJoinBoard(swi){

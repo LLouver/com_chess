@@ -71,12 +71,12 @@
 	</div>
 	<div id="board"></div>
 	<div id="selfPlayer" class="player">
-		<span  id="meName">
+		<span id="meName">
 			Me
 		</span >
-		<span  id="meCounting">
+		<span id="meCounting">
 		</span >
-		<span  id="meCountingImg">
+		<span id="meCountingImg">
 		</span >
 	</div>
 </div>
@@ -155,11 +155,12 @@
 	<button style="margin-left: 10px" id="settingButton" onclick="showTimeSetting(1)" hidden>设置时间</button>
 </div>
 
-<div id="timing" hidden>
+<div id="timing" >
 	<div class="timing_loading">
 		<span class="timing_top"></span>
 		<span class="timing_bottom"></span>
 	</div>
+	<div style="color: navajowhite"> 正在连接服务器 ...</div>
 </div>
 
 <div hidden>
@@ -173,7 +174,7 @@
 	<audio id="audio_illegal" src="./resources/audio/illegal.webm"></audio>
 	<audio id="audio_choose" src="./resources/audio/xuanzhong.wav"></audio>
 	<audio id="audio_upgrade" src="./resources/audio/shengbian.wav"></audio>
-	<img id='waiting' src='http://192.168.31.41:9010/chess/resources/images/waiting.gif' height='20px' alt="not found">
+	<img id='waiting' src='https://62q07n5709.goho.co/chess/resources/images/waiting.gif' height='20px' alt="not found">
 </div>
 
 
@@ -187,7 +188,6 @@
         //数组从位置1开始，位置0直接为空，不用管
         gameSitu[i]=[]; //数组每一个元素为一个数组
     }
-    showJoinBoard(1);
     document.getElementById("audio_waiting").volume=0.3;
     document.getElementById("audio_bgm").volume=0.5;
 </script>

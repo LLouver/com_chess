@@ -14,6 +14,9 @@ Chat.connect = function(host) {
 
     Chat.socket.onopen = function () {
         console.log('Info: WebSocket connection opened.');
+        alert("已成功连接！");
+        document.getElementById("timing").hidden=true;
+        showJoinBoard(1);
         /*document.getElementById('chat').onkeydown = function(event) {
             if (event.keyCode === 13) {
                 Chat.sendMessage();
@@ -24,6 +27,8 @@ Chat.connect = function(host) {
     Chat.socket.onclose = function () {
         //document.getElementById('chat').onkeydown = null;
         console.log('Info: WebSocket closed.');
+        alert("链接已断开！请刷新");
+        location.reload();
     };
 
     Chat.socket.onmessage = function (message) {
@@ -45,9 +50,9 @@ Chat.initialize = function() {
         Chat.connect('wss://' + 'localhost:9010' + '/examples/websocket/chat');
     }*/
     if (window.location.protocol === 'http:') {
-        Chat.connect('ws://' + '192.168.31.41:9010'+'/examples/websocket/chat');
+        Chat.connect('ws://' + window.location.host+'/examples/websocket/chat');
     } else {
-        Chat.connect('wss://' + '192.168.31.41:9010' + '/examples/websocket/chat');
+        Chat.connect('wss://' + window.location.host + '/examples/websocket/chat');
     }
 };
 
