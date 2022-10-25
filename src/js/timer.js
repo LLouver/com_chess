@@ -6,11 +6,11 @@ function countDown(playerSide){
     document.getElementById('meCounting').innerHTML=(Math.floor(restTime[side]/60)) + ' : ' + (restTime[side]%60);
     document.getElementById('enemyCounting').innerHTML=(Math.floor(restTime[side^1]/60)) + ' : ' + (restTime[side^1]%60);
     if(side===playerSide){
-        document.getElementById('meCountingImg').innerHTML += "<img src='/resources/images/waiting.gif' height='20px'>";
-        document.getElementById('enemyCountingImg').innerHTML="";
+        document.getElementById('meCountingImg').innerHTML = document.getElementById("waiting").outerHTML;
+        document.getElementById('enemyCountingImg').innerHTML ="";
     }else{
-        document.getElementById('enemyCountingImg').innerHTML += "<img src='/resources/images/waiting.gif' height='20px'>";
-        document.getElementById('meCountingImg').innerHTML="";
+        document.getElementById('enemyCountingImg').innerHTML = document.getElementById("waiting").outerHTML;
+        document.getElementById('meCountingImg').innerHTML ="";
     }
     counting = setInterval(function (){
         restTime[playerSide] --;

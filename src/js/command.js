@@ -8,6 +8,7 @@ function host(id,name,str_sideChose){
     playerName[side]=name;
     isHost=1;
     document.getElementById("timing").hidden=false;
+    document.getElementById("audio_waiting").play();
     //document.getElementById('selfPlayer').innerHTML=name;
 }
 
@@ -35,6 +36,7 @@ function accept(name,str_sideChose){
     showMainBoard();
     initSituation(gameSitu);
     showSituation(gameSitu);
+    document.getElementById("audio_waiting").play();
 }
 
 //准备/取消准备，发送/ready
@@ -73,18 +75,26 @@ function begin(){
         attackInfo[0][i]=[];
         attackInfo[1][i]=[];
     }
-    document.getElementById("bgm").play();
+    document.getElementById("audio_waiting").pause();
+    document.getElementById("audio_bgm").play();
 }
 
 //设置开始标志并重置比赛
 function end(type,info){
-    document.getElementById("bgm").pause();
+    document.getElementById("audio_end").play();
+    document.getElementById("audio_bgm").pause();
     if(type==='e')
         alert("平局");
     else if(parseInt(type)===side)
-        alert("你赢得了比赛！");
+        delaying=setInterval(function(){
+            alert("你赢得了比赛！");
+            clearInterval(delaying);
+            },1000);
     else
-        alert("你输掉了比赛！");
+        delaying=setInterval(function(){
+            alert("你输掉了比赛！");
+            clearInterval(delaying);
+        },1000);
     resetGame();
 }
 
@@ -94,7 +104,7 @@ function end(type,info){
 function move(lx,ly,cx,cy,playerSide){
     //console.log('player' + playerSide + ' made ' + lx + ly + cx + cy);
     cancelChoosePiece();
-    let p=gameSitu[lx][ly];
+    let p=gameSitu[lx][ly],c=gameSitu[cx][cy];
     if(p === 'bk') isMoved.bk=true;
     if(p === 'br' && ly === 1) isMoved.br1=true;
     if(p === 'br' && ly === 8) isMoved.br8=true;
@@ -126,19 +136,27 @@ function move(lx,ly,cx,cy,playerSide){
     clearInterval(counting);
     restTime[playerSide] += stepTime;
     countDown(playerSide^1);
-    if(side === playerSide){
-        return ;
+    if(side !== playerSide){
+        movable=1;
     }
-    movable=1;
-
-    if(isCheck(gameSitu,side^1)){
-        markCheck(side^1);
+    if(isCheck(gameSitu,playerSide)){
+        markCheck(playerSide);
         //console.log('now checkmating: ' + isCheckmate(gameSitu,moveInfo[side],side^1));
-        if(isCheckmate(gameSitu,moveInfo[side],side^1))
-            doRequest('/end ' + gameId + ' ' + (side^1));
+        if(isCheckmate(gameSitu,moveInfo[playerSide],playerSide)) {
+            if(side === playerSide)
+                doRequest('/end ' + gameId + ' ' + (playerSide));
+        }
+        else
+            document.getElementById("audio_check").play();
     }
-    else if(isEven(gameSitu,moveInfo[side],side)){
-        doRequest('/end ' + gameId + ' e');
+    else if(isEven(gameSitu,moveInfo[playerSide^1],playerSide^1)){
+        if(side === playerSide)
+            doRequest('/end ' + gameId + ' e');
+    }else{
+        if(c==="  ")
+            document.getElementById("audio_move").play();
+        else
+            document.getElementById("audio_capture").play();
     }
 }
 
@@ -147,6 +165,7 @@ function change(x,y,type){
     delPiece(x,y);
     addPiece(x,y,type);
     gameSitu[x][y]=type;
+    document.getElementById("audio_upgrade").play();
 }
 
 //按下各个按钮需要执行的事件
@@ -184,7 +203,12 @@ function clickChose(side){
 }
 
 function clickSetTime(){
-    doRequest('/setTime ' + gameId + ' ' + document.getElementById('globalTimeInput').value + ' ' + document.getElementById('stepTimeInput').value);
+    let a=document.getElementById('globalTimeInput').value,b=document.getElementById('stepTimeInput').value;
+    if(parseInt(a) < 30  || parseInt(b) < 0){
+        alert("局时不得少于30s,步时不得为负");
+        return;
+    }
+    doRequest('/setTime ' + gameId + ' ' + a + ' ' + b);
     showTimeSetting(0);
 }
 

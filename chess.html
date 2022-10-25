@@ -20,23 +20,23 @@
 	<link type="text/css" href="src/css/timing.css" rel="stylesheet">
 	<script>
 		//游戏唯一识别id
-        var gameId='0';
+        let gameId = '0';
         //记录双方的名字
-        var playerName=['null','null'];
+        let playerName=['null','null'];
         //记录是否是host
-        var isHost=0;
+        let isHost=0;
         //记录双方准备状况
-        var ready=[0,0];
+        let ready=[0,0];
         //记录游戏是否已经开始
-        var started=0;
+        let started=0;
         //记录现在是不是自己的回合，能不能移动棋子
-        var movable=0;
+        let movable=0;
         //记录局面
-        var gameSitu=[];
+        let gameSitu=[];
         //辅助数组，用于标记各种被攻击，可走到的位置。
-        var attackInfo=[];
+        let attackInfo=[];
         //辅助数组，用于标记各种被攻击，可走到的位置。
-        var moveInfo=[];
+        let moveInfo=[];
         //表示游戏者方向，1白0黑
         let side=1;
         //表示当前选中的棋子坐标，[0,0]表示没选
@@ -44,11 +44,12 @@
         //表示决定去哪
 		let chosenToGo=[];
         //表示局时
-        var restTime=[600,600];
+        let restTime=[90,90];
         //表示步时
-        var stepTime=30;
+        let stepTime=20;
 		//计时器
         let counting;
+        let delaying;
 		//标记过路兵
         let passant={x:0,y:0};
         //王车是否移动过
@@ -124,10 +125,10 @@
 	<div class="myForm">
 		<h2>我下？</h2>
 		<button id="chooseWhite" style="margin-left: 30%" onclick="clickChose(1)">
-			<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png" width="50" height="50" alt="/resources/images/wk.png">
+			<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/wk.png" width="50" height="50" alt="http://192.168.31.41:9010/chess/resources/images/wk.png">
 		</button>
 		<button id="chooseBlack" style="margin-left: 30%" onclick="clickChose(0)">
-			<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png" width="50" height="50" alt="/resources/images/bk.png">
+			<img style="opacity: 100%" src="https://images.chesscomfiles.com/chess-themes/pieces/neo/150/bk.png" width="50" height="50" alt="http://192.168.31.41:9010/chess/resources/images/bk.png">
 		</button>
 	</div>
 </div>
@@ -162,13 +163,28 @@
 </div>
 
 <div hidden>
-	<audio id="audio_bgm" src="/resources/audio/bgm.mp3"></audio>
+	<!--
+	<audio id="audio_bgm" loop src="/resources/audio/beijingyinyue.ogg"></audio>
 	<audio id="audio_check" src="/resources/audio/move-check.webm"></audio>
+	<audio id="audio_move" src="/resources/audio/move-self.webm"></audio>
 	<audio id="audio_capture" src="/resources/audio/capture.webm"></audio>
 	<audio id="audio_end" src="/resources/audio/game-end.webm"></audio>
 	<audio id="audio_start" src="/resources/audio/game-start.webm"></audio>
 	<audio id="audio_illegal" src="/resources/audio/illegal.webm"></audio>
+	-->
+	<audio id="audio_waiting" loop src="./resources/audio/denghouyinyue.ogg"></audio>
+	<audio id="audio_bgm" loop src="./resources/audio/beijingyinyue.ogg"></audio>
+	<audio id="audio_check" src="./resources/audio/jiangjun.wav"></audio>
+	<audio id="audio_move" src="./resources/audio/yidong.wav"></audio>
+	<audio id="audio_capture" src="./resources/audio/chizi.wav"></audio>
+	<audio id="audio_end" src="./resources/audio/jiangsi.wav"></audio>
+	<audio id="audio_start" src="./resources/audio/game-start.webm"></audio>
+	<audio id="audio_illegal" src="./resources/audio/illegal.webm"></audio>
+	<audio id="audio_choose" src="./resources/audio/xuanzhong.wav"></audio>
+	<audio id="audio_upgrade" src="./resources/audio/shengbian.wav"></audio>
+	<img id='waiting' src='http://192.168.31.41:9010/chess/resources/images/waiting.gif' height='20px'>
 </div>
+
 
 <script>
     "use strict";
@@ -182,6 +198,8 @@
     }
     //delPiece(3,5);
     showJoinBoard(1);
+    document.getElementById("audio_waiting").volume=0.3;
+    document.getElementById("audio_bgm").volume=0.5;
 </script>
 
 </body>

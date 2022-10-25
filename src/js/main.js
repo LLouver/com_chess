@@ -133,6 +133,10 @@ function showMainBoard(){
 }
 //显示/隐藏时间设置框，隐藏时发送/setTime
 function showTimeSetting(swi){
+    if(swi){
+        document.getElementById("globalTimeInput").value=restTime[0];
+        document.getElementById("stepTimeInput").value=stepTime;
+    }
     document.getElementById('timeSettingBlock').hidden = !swi;
 }
 
