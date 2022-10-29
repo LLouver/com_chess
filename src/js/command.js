@@ -170,13 +170,13 @@ function change(x,y,type){
 }
 
 function chat(playerSide,message){
-    console.log(side + "mess:" + playerSide + ' ' + message);
+    //console.log(side + "mess:" + playerSide + ' ' + message);
     if(side===playerSide){
         document.getElementById("meChatting").hidden=false;
         document.getElementById("meChatting").innerHTML=message;
         chatBubbleTiming[playerSide]=setInterval(function(){
             document.getElementById("meChatting").hidden=true;
-            console.log("hidden me");
+            //console.log("hidden me");
             clearInterval(chatBubbleTiming[playerSide]);
         },3000);
         console.log(chatBubbleTiming[playerSide]);
@@ -185,7 +185,7 @@ function chat(playerSide,message){
         document.getElementById("enemyChatting").innerHTML=message;
         chatBubbleTiming[playerSide]=setInterval(function(){
             document.getElementById("enemyChatting").hidden=true;
-            console.log("hidden enemy");
+            //console.log("hidden enemy");
             clearInterval(chatBubbleTiming[playerSide]);
         },3000);
         console.log(chatBubbleTiming[playerSide]);
