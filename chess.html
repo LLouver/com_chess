@@ -18,6 +18,7 @@
 	<link type="text/css" href="src/css/piece.css" rel="stylesheet">
 	<link type="text/css" href="src/css/UI.css" rel="stylesheet">
 	<link type="text/css" href="src/css/timing.css" rel="stylesheet">
+	<link type="text/css" href="src/css/chat.css" rel="stylesheet">
 	<script>
 		//游戏唯一识别id
         let gameId = '0';
@@ -50,6 +51,7 @@
 		//计时器
         let counting;
         let delaying;
+        let chatBubbleTiming=[];
 		//标记过路兵
         let passant={x:0,y:0};
         //王车是否移动过
@@ -59,8 +61,11 @@
 
 <body style="background-color: #312e2b">
 
+
+
 <div id="mainBoard" hidden>
 	<div id="enemyPlayer" class="player">
+		<div id="enemyChatting" hidden></div>
 		<span id="enemyName">
 			Enemy
 		</span>
@@ -71,6 +76,7 @@
 	</div>
 	<div id="board"></div>
 	<div id="selfPlayer" class="player">
+		<div id="meChatting" hidden></div>
 		<span id="meName">
 			Me
 		</span >
@@ -78,6 +84,9 @@
 		</span >
 		<span id="meCountingImg">
 		</span >
+		<span>
+			<label for="chat"></label><input id="chat"/>
+		</span>
 	</div>
 </div>
 
@@ -163,6 +172,8 @@
 	<div style="color: navajowhite"> 正在连接服务器 ...</div>
 </div>
 
+
+
 <div hidden>
 	<audio id="audio_waiting" loop src="./resources/audio/denghouyinyue.ogg"></audio>
 	<audio id="audio_bgm" loop src="./resources/audio/beijingyinyue.ogg"></audio>
@@ -190,6 +201,11 @@
     }
     document.getElementById("audio_waiting").volume=0.3;
     document.getElementById("audio_bgm").volume=0.5;
+    document.getElementById('chat').onkeydown = function(event) {
+        if (event.keyCode === 13) {
+            Chat.sendMessage();
+        }
+    };
 </script>
 
 </body>

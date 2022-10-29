@@ -17,11 +17,6 @@ Chat.connect = function(host) {
         alert("已成功连接！");
         document.getElementById("timing").hidden=true;
         showJoinBoard(1);
-        /*document.getElementById('chat').onkeydown = function(event) {
-            if (event.keyCode === 13) {
-                Chat.sendMessage();
-            }
-        };*/
     };
 
     Chat.socket.onclose = function () {
@@ -44,20 +39,21 @@ Chat.initialize = function() {
          Chat.connect('wss://' + window.location.host + '/examples/websocket/chat');
      }*/
 
-    /*if (window.location.protocol === 'http:') {
+    if (window.location.protocol === 'http:') {
         Chat.connect('ws://' + 'localhost:9010'+'/examples/websocket/chat');
     } else {
         Chat.connect('wss://' + 'localhost:9010' + '/examples/websocket/chat');
-    }*/
-    if (window.location.protocol === 'http:') {
+    }
+    /*if (window.location.protocol === 'http:') {
         Chat.connect('ws://' + window.location.host+'/examples/websocket/chat');
     } else {
         Chat.connect('wss://' + window.location.host + '/examples/websocket/chat');
-    }
+    }*/
 };
 
 Chat.sendMessage = function() {
-    doRequest(document.getElementById('chat').value);
+    doRequest("/chat " + gameId + ' ' + side + ' ' + document.getElementById('chat').value);
+    document.getElementById('chat').value=' ';
 };
 
 Chat.initialize();

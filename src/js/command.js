@@ -169,6 +169,30 @@ function change(x,y,type){
     document.getElementById("audio_upgrade").play();
 }
 
+function chat(playerSide,message){
+    console.log(side + "mess:" + playerSide + ' ' + message);
+    if(side===playerSide){
+        document.getElementById("meChatting").hidden=false;
+        document.getElementById("meChatting").innerHTML=message;
+        chatBubbleTiming[playerSide]=setInterval(function(){
+            document.getElementById("meChatting").hidden=true;
+            console.log("hidden me");
+            clearInterval(chatBubbleTiming[playerSide]);
+        },3000);
+        console.log(chatBubbleTiming[playerSide]);
+    }else{
+        document.getElementById("enemyChatting").hidden=false;
+        document.getElementById("enemyChatting").innerHTML=message;
+        chatBubbleTiming[playerSide]=setInterval(function(){
+            document.getElementById("enemyChatting").hidden=true;
+            console.log("hidden enemy");
+            clearInterval(chatBubbleTiming[playerSide]);
+        },3000);
+        console.log(chatBubbleTiming[playerSide]);
+    }
+
+}
+
 //按下各个按钮需要执行的事件
 function clickReady(){
     doRequest('/ready ' + gameId + ' ' + side + ' ' + (ready[side]^1));//发送请求

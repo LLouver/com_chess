@@ -17,7 +17,7 @@ function doReceive(s){
     }
     let p=s.indexOf(":");
     let args = s.substring(p+2).split(' ');
-    //console.log("rec:" + args);
+    console.log("rec:" + args);
     switch (args[0]){
         case '/host'://id,name,side
             //console.log('a room created');
@@ -54,6 +54,22 @@ function doReceive(s){
                 change(parseInt(args[2]),parseInt(args[3]),args[7]);
             }
             move(parseInt(args[2]),parseInt(args[3]),parseInt(args[4]),parseInt(args[5]),parseInt(args[6]));
+            break;
+        case '/time'://id t0 t1
+            if(args[1]!==gameId)
+                return;
+            restTime[0]=parseInt(args[2]);
+            restTime[1]=parseInt(args[3]);
+            break;
+        case '/chat'://id playerSide
+            if(args[1]!==gameId)
+                return;
+            let t="",i=3;
+            while(args[i]!==null && args[i] !== undefined) {
+                t += args[i];
+                ++i;
+            }
+            chat(parseInt(args[2]), t);
             break;
     }
 }
