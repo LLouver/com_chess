@@ -24,9 +24,7 @@ css样式与美工：朱永祥 毛宇录 王胤杰
 
 完整教程[戳这里](https://www.chess.com/lessons)
 
-合法且唯一合法的开局摆法
-
-![](http://www.laomaozy.com/uploads/allimg/202106/15422.jpg)
+合法且唯一合法的开局摆法[戳这里](http://www.laomaozy.com/uploads/allimg/202106/15422.jpg)
 
 ### 全局变量-global
 
