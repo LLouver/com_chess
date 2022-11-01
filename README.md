@@ -14,9 +14,7 @@ css样式与美工：朱永祥 毛宇录 王胤杰
 
 图片资源：毛宇录 王胤杰 田翔宇
 
-音乐音效资源：朱永祥 
-
-服务器与数据库搭建：朱永祥 
+音乐音效资源：朱永祥  
 
 内网穿透： 田翔宇  朱永祥
 
@@ -27,7 +25,8 @@ css样式与美工：朱永祥 毛宇录 王胤杰
 完整教程[戳这里](https://www.chess.com/lessons)
 
 合法且唯一合法的开局摆法
-![intro](http://www.laomaozy.com/uploads/allimg/202106/15422.jpg)
+
+![](http://www.laomaozy.com/uploads/allimg/202106/15422.jpg)
 
 ### 全局变量-global
 
